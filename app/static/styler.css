@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: beige; /* Maroon background color */
+    color: rgb(17, 15, 15); /* White text color */
+}
+header img {
+    max-width: 150px; /* Adjust as needed */
+    height: auto;
+}
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+form {
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* White form background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(201, 57, 57, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input {
+    width: calc(100% - 16px); /* Adjusting for padding */
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: rgb(0, 255, 136); /* Maroon button color */
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2ac91b; /* Darker maroon on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    form {
+        width: 90%;
+        max-width: none;
+    }
+}
