@@ -18,7 +18,7 @@ form {
     max-width: 320px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff; /* White form background */
+    background-color: rgba(0, 128, 0, 0.1); /* White form background */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(201, 57, 57, 0.1);
 }
