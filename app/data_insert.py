@@ -1,13 +1,14 @@
-# add_data.py
+#!/usr/bin/python3
+
 import mysql.connector
 
 def insert_user_data(user_data):
     try:
         connection = mysql.connector.connect(
-            host="your_host",
-            user="your_user",
-            password="your_password",
-            database="your_database"
+            host="localhost",
+            user="root",
+            password="",
+            database="island"
         )
 
         cursor = connection.cursor()
