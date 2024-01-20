@@ -16,28 +16,25 @@ db_config = {
     'password': '',
     'database': 'island'
 }
+#establish a connection to mysql
+connection = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="",
+        database="island"
+)
+#stor all email in var
+cursor = connection.cursor()
+cursor.execute("SELECT GROUP_CONCAT(email SEPARATOR ',') FROM users")
+result1 = cursor.fetchone()
+email_list = result1[0] if result1 else None
 
-# Path to master json
+cursor.execute("SELECT GROUP_CONCAT(password SEPARATOR ',') FROM users")
+result2 = cursor.fetchone()
+password_list = result2[0] if result2 else None
+
+# path to mester json
 json_file_path = os.path.join(os.path.dirname(__file__), 'register_data.json')
-
-# Check if user exists
-def user_exists(email, password):
-    with open(json_file_path, 'r') as json_file:
-        for line in json_file:
-            try:
-                user_data = json.loads(line)
-                if user_data['email'] == email and check_password_hash(user_data['password'], password):
-                    return True
-            except json.decoder.JSONDecodeError:
-                pass
-    return False
-
-# Write to JSON file only if user doesn't exist
-def write_to_json(data):
-    if not user_exists(data['email'], data['password']):
-        with open(json_file_path, 'a') as json_file:
-            json.dump(data, json_file)
-            json_file.write('\n')
 
 @app.route('/')
 def index():
@@ -49,35 +46,46 @@ def register():
     email = request.form['email']
     password = request.form['password']
 
-    if user_exists(email, password):
-        return render_template('index.html')
+    # Call the user_existe function
+    user_exists_result = user_existe(email, password)
 
-    # Create a dictionary for master json
-    registration_data = {
-        'username': username,
-        'email': email,
-        'password': password
-    }
+    if user_exists_result == 'exists':
+        return 'User already exists!'
+    else:
+        # Create a dictionary for mister json
+        registration_data = {
+            'username' : username,
+            'email' : email,
+            'password' : password
+        }
 
-    # Save the registration_data in master json only if the user doesn't exist
-    write_to_json(registration_data)
+        # Save the register_data in mester json
+        with open(json_file_path, 'a') as json_file:
+            json.dump(registration_data, json_file)
+            json_file.write('\n')
 
-    conn = mysql.connector.connect(**db_config)
-    cursor = conn.cursor()
+        conn = mysql.connector.connect(**db_config)
+        cursor = conn.cursor()
 
-    # Hash the password before storing it
-    hashed_password = generate_password_hash(password)
+        # Hash the password before storing it
+        hashed_password = generate_password_hash(password)
 
-    try:
-        cursor.execute("INSERT INTO users (username, email, password) VALUES (%s, %s, %s)", (username, email, hashed_password))
-        conn.commit()
-        return 'Registration successful!'
-    except Exception as e:
-        conn.rollback()
-        return f'Error: {e}'
-    finally:
-        cursor.close()
-        conn.close()
+        try:
+            cursor.execute("INSERT INTO users (username, email, password) VALUES (%s, %s, %s)", (username, email, hashed_password))
+            conn.commit()
+            return 'Registration successful!'
+        except Exception as e:
+            conn.rollback()
+            return f'Error: {e}'
+        finally:
+            cursor.close()
+            conn.close()
+
+def user_existe(email, password):
+    if email in email_list and password in password_list:
+        return 'exists'
+    else:
+        return 'not exists'
 
 if __name__ == '__main__':
     app.run(debug=True)
