@@ -15,7 +15,7 @@ header {
 	width: 60px;
 	position: fixed;
 	top: 8%;
-	background: url('images/icon.png') no-repeat center center;
+	background: url('./images/icon.png') no-repeat center center;
 	background-size: cover;
 	transform: translateY(-50%);
 	height: 60px;
