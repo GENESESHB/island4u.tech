@@ -14,10 +14,10 @@
 		<header>
 			<div class="header-content">
 				<div class="header-buttons-dash">
-					<a href="{{ url_for('index') }}"><button id="home-page">home</button>
+					<button onclick="window.location.href='{{ url_for('dashboard') }}'">home</button>
 				</div>
 				<div class="header-buttons-user">
-					<a href="{{ url_for('user') }}"><button id="user-page">profile</button>
+					<button onclick="window.location.href='{{ url_for('user') }}'">profile</button>
 				</div>
 			</div>
 		</header>

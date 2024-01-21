@@ -80,15 +80,12 @@ def register():
 
 
 @app.route('/dashboard')
-def dashbord():
+def dashboard():
     return render_template('dashboard.html')
 
 @app.route('/user')
 def user():
-    if 'email' in email_list:
-        return render_template('user.html')
-    else:
-        return render_template('register.html')
+    return render_template('user.html')
 
 
 if __name__ == '__main__':

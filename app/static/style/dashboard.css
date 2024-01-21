@@ -28,6 +28,10 @@ header {
 	width: 60px;
 	position: fixed;
 	top: 8%;
+	border: 9px;
+	border-color: green;
+	background: url('./images/icon.png') no-repeat center center;
+	background-size: cover;
 	transform: translateY(-50%);
 	height: 60px;
 	border-radius: 50%;
