@@ -87,6 +87,9 @@ def dashboard():
 def user():
     return render_template('user.html')
 
+@app.route('/sign')
+def sign():
+    return render_template('register.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

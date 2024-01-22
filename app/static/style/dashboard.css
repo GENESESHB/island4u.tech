@@ -1,19 +1,29 @@
-body {
+*{
 	margin: 0;
 	padding: 0;
-	font-family: 'Arial', sans-serif;
-	background-color: beige;
+	box-sizing: border-box;
+	font-family: 'Jost', sans-serif;
+	list-style: none;
+	text-decoration: none;
 }
 
 header {
-	border-bottom: 1px solid #ccc;
-	border-radius: 2px;
-	height: 80px;
+	position: fixed;
 	width: 100%;
+	top: 0;
+	right: 0;
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px 10%;
 	background-color: #f5efef;
-	margin: 0;
-	padding: 0;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+	max-width: 120px;
+	height: 1cm;
 }
 
 section {
@@ -28,62 +38,40 @@ section {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.logo img {
+
+.nav-icon{
 	display: flex;
-	margin: 0;
-	padding: 0;
-	margin-left: 1%;
-	width: 15%;
-	height: 10%;
-	max-height: 60px;
-	max-width: 60px;
+	align-items: center;
 }
 
-.header-buttons-sing-in button {
-	width: 70px;
-	position: fixed;
-	top: 6%;
-	height: 60px;
-	background-color: aqua;
-	transform: translateY(-50%);
-	height: 60px;
-	border-radius: 15px;
-	right: 90px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.nav-icon i{
+	margin-right: 20px;
+	color: #2c2c2c;
+	font-size: 25px;
+	font-weight: 400;
+	transform: all .42s ease;
 }
 
-.header-buttons-user button {
-	width: 60px;
-	position: fixed;
-	top: 6%;
-	background: green;
-	background-size: cover;
-	transform: translateY(-50%);
-	height: 60px;
-	border-radius: 50%;
-	right: 4px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+#menu-icon{
+	font-size: 35px;
+	color: #2c2c2c;
+	z-index: 10001;
+	cursor: pointer;
+} 
+.sign-in {
+	border: 1px solid #ccc;
 }
 
-.header-buttons-dash button {
-	width: 70px;
-	position: fixed;
-	top: 6%;
-	height: 60px;
-	background-color: aqua;
-	transform: translateY(-50%);
-	height: 60px;
-	border-radius: 15px;
-	margin-left: 2px;
-	right: 200px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.nav-icon i:hover{
+	transform: scale(1.1);
+	color: #EE1C47;
 }
+
 .container {
 	display: flex;
 	justify-content: space-around;
 	padding: 20px;
 }
-
 .card {
 	flex: 1;
 	background-color: #f4f4f4;
