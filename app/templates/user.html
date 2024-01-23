@@ -3,22 +3,26 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="{{ url_for('static', filename='style/styler.css') }}">
 		<link rel="stylesheet" href="{{ url_for('static', filename='style/dashboard.css') }}">
 		<script src="{{ url_for('static', filename='script/dashboard.js') }}" defer></script>
 		<link rel="icon" href="{{ url_for('static', filename='images/icon.png') }}">
 		<link rel="icon" href="static/images/icon.png">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;1,300&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 		<title>Dashboard</title>
 	</head>
 	<body>
 		<header>
-			<div class="header-content">
-				<div class="header-buttons-dash">
-					<button onclick="window.location.href='{{ url_for('dashboard') }}'">home</button>
-				</div>
-				<div class="header-buttons-user">
-					<button onclick="window.location.href='{{ url_for('user') }}'">profile</button>
-				</div>
+			<div class="logo">
+				<img src="./static/images/icon.png" alt="logo" >
+			</div>
+			<div class="nav-icon">
+				<a onclick="window.location.href='{{ url_for('dashboard') }}'"><i class='bx bx-home'></i></a>
+				<a onclick="window.location.href='{{ url_for('user') }}'"><i class='bx bx-user'></i></a>
+				<div class="bx bx-menu" id="menu-icon"></div>
+				<div class="sing-in"><a onclick="window.location.href='{{ url_for('sign') }}'">sign-in</a></div>
 			</div>
 		</header>
 		<section class="inside">
@@ -31,8 +35,12 @@
 					<h2>Card 2</h2>
 					<p>Content for Card 2</p>
 				</div>
+				<div class="card">
+					<h2>Card 3</h2>
+					<p>Content for Card 3</p>
+				</div>
 			</div>
 		</section>
 	</body>
-
 </html>
+

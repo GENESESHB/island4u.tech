@@ -26,19 +26,6 @@ header {
 	height: 1cm;
 }
 
-section {
-	padding: 71px;
-	width: auto;
-	border: 1px solid #ccc;
-	border-radius: 2px;
-	display: center;
-	background-color: whitesmoke;
-	left: 5%;
-	right: 5%;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-
 .nav-icon{
 	display: flex;
 	align-items: center;
@@ -71,6 +58,9 @@ section {
 	display: flex;
 	justify-content: space-around;
 	padding: 20px;
+}
+.inside {
+	padding: 70px
 }
 .card {
 	flex: 1;

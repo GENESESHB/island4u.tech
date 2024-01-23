@@ -3,29 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/style/styler.css">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styler.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/styler.css') }}">
     <title>island4u</title>
-    <link rel="stylesheet" href="static/style/styler.css">
     <link rel="icon" href="static/images/icon.png">
 
 </head>
 <body>
-    <header>
-        <img src="static/images/logo.png" alt="Company Logo">
-        <h1>sing-in</h1>
-    </header>
     <form action="/register" method="post">
-        <label for="username">Username:</label>
+	<img class="logo" src="static/images/icon.png" alt="Company Logo">
+        <label for="username">   Username</label>
         <input type="text" id="username" name="username" required>
     
-        <label for="email">Email:</label>
+        <label for="email">      Email</label>
         <input type="email" id="email" name="email" required>
     
-        <label for="password">Password:</label>
+        <label for="password">   Password</label>
         <input type="password" id="password" name="password" required>
     
-        <button type="submit">Register</button>
+        <button type="submit">   sign in</button>
     </form>
 </body>
 </html>
