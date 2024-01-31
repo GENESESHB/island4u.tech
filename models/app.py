@@ -36,7 +36,7 @@ def create_app():
     app.config['SECRET_KEY'] = 'HASSANBOUDRAA8@'
 
     db.init_app(app)
-    
+
     migrate.init_app(app, db)
 
     login_manager.init_app(app)
@@ -48,6 +48,10 @@ def create_app():
     @app.route('/')
     def index():
         return render_template('login.html')
+
+    @app.route('/signup')
+    def signup():
+        return render_template('signup.html')
 
     @app.route('/signin', methods=['POST'])
     def signin():
@@ -73,7 +77,6 @@ def create_app():
         user_id = current_user.id
         username = current_user.username
         email = current_user.email
-        
         return render_template('user.html', username=username, email=email, user_id=user_id)
 
     with app.app_context():

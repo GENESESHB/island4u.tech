@@ -11,13 +11,23 @@
 <body>
     <form action="/signup" method="post">
 	<img class="logo" src="static/images/icon.png" alt="Company Logo"> 
-        <label for="email">      Email</label>
+	
+	<label for="username">   username</label>
+	<input type="username" id="username" name="username" required>
+	
+	<label for="city">   city</label>
+	<input type="city" id="city" name="city" required>
+	
+	<label for="phone_number">   phone_number</label>
+	<input type="phone_number" id="phone_number" name="phone_number" required>
+	
+	<label for="email">      Email</label>
         <input type="email" id="email" name="email" required>
     
         <label for="password">   Password</label>
         <input type="password" id="password" name="password" required>
     
-        <button type="submit">   sign in</button>
+        <button type="submit">   sign Up</button>
     </form>
 </body>
 </html>

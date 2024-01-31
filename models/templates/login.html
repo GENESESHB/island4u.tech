@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <button class="github-button">Sign Up</button>
+    <button onclick="window.location.href='{{ url_for('signup') }}'" class="github-button">Sign Up</button>
     <form action="/signin" method="post">
 	<img class="logo" src="static/images/icon.png" alt="Company Logo">
 
