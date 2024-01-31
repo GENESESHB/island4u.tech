@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/styler.css') }}">
+    <title>island4u</title>
+    <link rel="icon" href="static/images/icon.png">
+
+</head>
+<body>
+    <button class="github-button">Sign Up</button>
+    <form action="/signin" method="post">
+	<img class="logo" src="static/images/icon.png" alt="Company Logo">
+
+        <label for="email">      Email</label>
+        <input type="email" id="email" name="email" required>
+    
+        <label for="password">   Password</label>
+        <input type="password" id="password" name="password" required>
+    
+        <button type="submit">   sign in</button>
+    </form>
+</body>
+</html>
