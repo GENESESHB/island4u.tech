@@ -59,15 +59,22 @@ button:hover {
     background-color: #2ac91b; /* Darker maroon on hover */
 }
 .github-button {
-	background-color: #28a745; /* GitHub's green color */
-	color: #ffffff; /* White text */
+	background-color: #f5efef; 
+	color: blue;
 	padding: 10px 20px;
-	font-size: 16px;
-	font-weight: bold;
+	font-size: 14px;
+	font-weight: normal;
 	border: 1px solid #28a745;
-	border-radius: 5px;
+	border-radius: 25px;
 	cursor: pointer;
 	transition: background-color 0.3s ease-in-out;
+}
+h1 {
+	font-weight: normal;
+	margin-top: 30px;
+	font-family: 'Jost', sans-serif;
+	font-size: 14px;
+	color; black;
 }
 
 .github-button:hover {
