@@ -9,8 +9,7 @@
 
 </head>
 <body>
-    <button onclick="window.location.href='{{ url_for('signup') }}'" class="github-button">Sign Up</button>
-    <form action="/signin" method="post">
+    <form action="/login" method="post">
 	<img class="logo" src="static/images/icon.png" alt="Company Logo">
 
         <label for="email">      Email</label>
@@ -20,6 +19,9 @@
         <input type="password" id="password" name="password" required>
     
         <button type="submit">   sign in</button>
+	<h1>if u don't have accont
+	<button onclick="window.location.href='{{ url_for('signup') }}'" class="github-button">Sign Up</button>
+	</h1>
     </form>
 </body>
 </html>
