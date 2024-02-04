@@ -22,6 +22,12 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+class Image(db.Model):
+    __tablename__ = 'image'
+    id = db.Column(db.String(50), primary_key=True, default=lambda: str(uuid.uuid4()), unique=True, nullable=False)
+    filename = db.Column(db.String(255), nullable=False)
+    product_id = db.Column(db.String(50), db.ForeignKey('product.id'), nullable=False)
+    product = db.relationship('Product', backref='images')
 
 class Product(db.Model):
     __tablename__ = 'product'
