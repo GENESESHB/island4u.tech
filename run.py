@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-from models.app import create_app, db
+from models.app import create_app
+from models.user import db
 
 app = create_app()
 

@@ -4,31 +4,13 @@
 from flask_migrate import Migrate
 import os
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-from werkzeug.security import generate_password_hash, check_password_hash
+from .user import User , db
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_sqlalchemy import SQLAlchemy
 import uuid
-
-db = SQLAlchemy()
 
 login_manager = LoginManager()
 login_manager.login_view = 'login'
 migrate = Migrate()
-
-# User class for Flask-Login
-class User(UserMixin, db.Model):
-    __tablename__ = 'user'
-    id = db.Column(db.String(50), primary_key=True, default=lambda: str(uuid.uuid4()), unique=True, nullable=False)
-    username = db.Column(db.String(80), unique=False, nullable=False)
-    city = db.Column(db.String(20), unique=False, nullable=False)
-    email = db.Column(db.String(20), unique=False, nullable=False)
-    password_hash = db.Column(db.String(28), nullable=False)
-
-    def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
-
-    def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
 
 def create_app():
     app = Flask(__name__)
