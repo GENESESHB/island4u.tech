@@ -99,7 +99,11 @@ def create_app():
         username = current_user.username
         email = current_user.email
         return render_template('user.html', username=username, email=email, user_id=user_id)
-
+    
+    @app.route('/exit')
+    def exit():
+        return render_template('login.html')
+    
     with app.app_context():
         db.create_all()
 
