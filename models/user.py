@@ -23,3 +23,15 @@ class User(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+class Product(db.Model):
+    __tablename__ = 'product'
+    id = db.Column(db.String(50), primary_key=True, default=lambda: str(uuid.uuid4()), unique=True, nullable=False)
+    product_name = db.Column(db.String(50), unique=False, nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    user_id = db.Column(db.String(50), db.ForeignKey('user.id'), nullable=False)
+    user = db.relationship('User', backref='products')
+
+    def __init__(self, product_name, price, user):
+        self.product_name = product_name
+        self.price = price
+        self.user = user
