@@ -4,7 +4,7 @@
 from flask_migrate import Migrate
 import os
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-from .user import User, Products, db  # Import Product model
+from .user import User , db
 from flask import Flask, render_template, request, redirect, url_for, flash
 import uuid
 
@@ -14,16 +14,15 @@ migrate = Migrate()
 
 def create_app():
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cli.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///client.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = 'HASSANBOUDRAA8@'
-    app.config['UPLOAD_FOLDER'] = 'uploads'  # Folder to store uploaded images
 
     db.init_app(app)
     migrate.init_app(app, db)
+    migrate.init_app(app, db)
     login_manager.init_app(app)
 
-    # User loader function for Flask-Login
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(user_id)
@@ -82,11 +81,11 @@ def create_app():
         username = current_user.username
         email = current_user.email
         return render_template('user.html', username=username, email=email, user_id=user_id)
-
+    
     @app.route('/exit')
     def exit():
         return render_template('login.html')
-
+    
     @app.route('/products')
     @login_required
     def products():
@@ -98,13 +97,10 @@ def create_app():
     def add_product():
         if request.method == 'POST':
             name = request.form['name']
-            price = float(request.form['price'])
+            # Handle image upload and save the path to the database
             image_path = save_uploaded_image(request.files['image'])
-            user_id = current_user.id
-            
-            import uuid
 
-            new_product = Products(id=str(uuid.uuid4()), name=name, image_path=image_path, price=float(price), user=current_user)
+            new_product = Product(name=name, image_path=image_path, user=current_user)
             db.session.add(new_product)
             db.session.commit()
 
@@ -112,17 +108,7 @@ def create_app():
             return redirect(url_for('products'))
 
         return render_template('add_product.html')
-
-    # Helper function to save uploaded image
-    def save_uploaded_image(file):
-        if file:
-            file_name = str(uuid.uuid4()) + file.filename
-            file_path = os.path.join(app.root_path, 'uploads', file_name)
-            file.save(file_path)
-            return file_path
-
-        return None
-
+    
     with app.app_context():
         db.create_all()
 

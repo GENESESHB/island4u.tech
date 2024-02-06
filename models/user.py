@@ -22,22 +22,13 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
-class Image(db.Model):
-    __tablename__ = 'image'
-    id = db.Column(db.String(50), primary_key=True, default=lambda: str(uuid.uuid4()), unique=True, nullable=False)
-    filename = db.Column(db.String(255), nullable=False)
-    product_id = db.Column(db.String(50), db.ForeignKey('product.id'), nullable=False)
-    product = db.relationship('Product', backref='images')
 
-class Product(db.Model):
-    __tablename__ = 'product'
-    id = db.Column(db.String(50), primary_key=True, default=lambda: str(uuid.uuid4()), unique=True, nullable=False)
-    product_name = db.Column(db.String(50), unique=False, nullable=False)
+class Products(db.Model):
+    id = db.Column(db.String, primary_key=True, default=str(uuid.uuid4()))
+    name = db.Column(db.String(255), nullable=False)
     price = db.Column(db.Float, nullable=False)
+    image_path = db.Column(db.String(255), nullable=True)
     user_id = db.Column(db.String(50), db.ForeignKey('user.id'), nullable=False)
-    user = db.relationship('User', backref='products')
+    user = db.relationship('User', backref=db.backref('products', lazy=True))
 
-    def __init__(self, product_name, price, user):
-        self.product_name = product_name
-        self.price = price
-        self.user = user
+   
