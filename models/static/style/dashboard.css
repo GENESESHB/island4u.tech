@@ -60,7 +60,8 @@ header {
 	padding: 20px;
 }
 .inside {
-	padding: 70px
+	padding-top: 70px;
+	padding-right: 10px;
 }
 .card {
 	flex: 1;
@@ -74,5 +75,13 @@ header {
 @media (max-width: 600px) {
 	.inside {
 		flex: 100%;
+	}
+	.container {
+		flex-direction: column; /* Set to row to display cards horizontally */
+		width: max-content;
+	}
+	.card {
+		width: 100%; /* Ensure each card takes 100% width */
+		margin: 10px 0;
 	}
 }
