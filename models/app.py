@@ -136,6 +136,12 @@ def create_app():
             return file_path
         return None
     
+    @app.route('/all_products')
+    @login_required
+    def all_products():
+        all_products = Products.query.all()
+        return render_template('all_products.html', all_products=all_products)
+    
     with app.app_context():
         db.create_all()
 
