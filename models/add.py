@@ -4,13 +4,14 @@
 from flask_migrate import Migrate
 import os
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-from .user import User , db
+from .user import User, db
 from flask import Flask, render_template, request, redirect, url_for, flash
 import uuid
 
 login_manager = LoginManager()
 login_manager.login_view = 'login'
 migrate = Migrate()
+
 
 def create_app():
     app = Flask(__name__)
@@ -64,7 +65,9 @@ def create_app():
                 login_user(user)
                 return redirect(url_for('dashboard'))
             else:
-                flash('Invalid email or password. Please try again or register.', 'error')
+                flash(
+                    'Invalid email or password. Please try again or register.',
+                    'error')
                 return redirect(url_for('signup'))
 
         return render_template('login.html')
@@ -80,12 +83,16 @@ def create_app():
         user_id = current_user.id
         username = current_user.username
         email = current_user.email
-        return render_template('user.html', username=username, email=email, user_id=user_id)
-    
+        return render_template(
+            'user.html',
+            username=username,
+            email=email,
+            user_id=user_id)
+
     @app.route('/exit')
     def exit():
         return render_template('login.html')
-    
+
     @app.route('/products')
     @login_required
     def products():
@@ -100,7 +107,10 @@ def create_app():
             # Handle image upload and save the path to the database
             image_path = save_uploaded_image(request.files['image'])
 
-            new_product = Product(name=name, image_path=image_path, user=current_user)
+            new_product = Product(
+                name=name,
+                image_path=image_path,
+                user=current_user)
             db.session.add(new_product)
             db.session.commit()
 
@@ -108,9 +118,8 @@ def create_app():
             return redirect(url_for('products'))
 
         return render_template('add_product.html')
-    
+
     with app.app_context():
         db.create_all()
 
     return app
-

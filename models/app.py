@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """starting flask"""
 
+from sqlalchemy.orm import relationship
 from flask_migrate import Migrate
+from sqlalchemy import Column, String, Float, Integer, ForeignKey
 import os
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from .user import User, Products, db  # Import Product model
@@ -12,9 +14,10 @@ login_manager = LoginManager()
 login_manager.login_view = 'login'
 migrate = Migrate()
 
+
 def create_app():
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cli.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///imobi.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = 'HASSANBOUDRAA8@'
     app.config['UPLOAD_FOLDER'] = 'uploads'  # Folder to store uploaded images
@@ -65,7 +68,9 @@ def create_app():
                 login_user(user)
                 return redirect(url_for('dashboard'))
             else:
-                flash('Invalid email or password. Please try again or register.', 'error')
+                flash(
+    'Invalid email or password. Please try again or register.',
+     'error')
                 return redirect(url_for('signup'))
 
         return render_template('login.html')
@@ -81,7 +86,11 @@ def create_app():
         user_id = current_user.id
         username = current_user.username
         email = current_user.email
-        return render_template('user.html', username=username, email=email, user_id=user_id)
+        return render_template(
+    'user.html',
+    username=username,
+    email=email,
+     user_id=user_id)
 
     @app.route('/exit')
     def exit():
@@ -101,10 +110,21 @@ def create_app():
             price = float(request.form['price'])
             image_path = save_uploaded_image(request.files['image'])
             user_id = current_user.id
+            num_rooms = int(request.form['num_rooms'])
+            num_salon = int(request.form['num_salon'])
+            num_bain = int(request.form['num_bain'])
+            window_per_chamber = int(request.form['window_per_chamber'])
             
-            import uuid
+            new_product = Products(
+                    name=name, 
+                    price=price, 
+                    image_path=image_path, 
+                    num_rooms=num_rooms, 
+                    num_salon=num_salon, 
+                    num_bain=num_bain, 
+                    window_per_chamber=window_per_chamber, 
+                    user=current_user)
 
-            new_product = Products(id=str(uuid.uuid4()), name=name, image_path=image_path, price=float(price), user=current_user)
             db.session.add(new_product)
             db.session.commit()
 
@@ -112,17 +132,15 @@ def create_app():
             return redirect(url_for('products'))
 
         return render_template('add_product.html')
-
-    # Helper function to save uploaded image
+    
     def save_uploaded_image(file):
         if file:
             file_name = str(uuid.uuid4()) + file.filename
             file_path = os.path.join(app.root_path, 'uploads', file_name)
             file.save(file_path)
             return file_path
-
         return None
-
+    
     with app.app_context():
         db.create_all()
 
