@@ -16,7 +16,12 @@
             <p>Number of Salons: {{ product.num_salon }}</p>
             <p>Number of Bathrooms: {{ product.num_bain }}</p>
             <p>Windows per Chamber: {{ product.window_per_chamber }}</p>
-            <img src="{{ url_for('static', filename=product.image_path) }}" alt="{{ product.name }} Image">
+	    
+	    {% if product.image_path %}
+	         <a href="">
+			 <img src="{{ url_for('serve_image', filename=product.image_path.split('/')[-1]) }}" alt="Product Image"/>
+		 </a>
+	    {% endif %}
             <!-- Add other product details as needed -->
         </div>
     {% endfor %}

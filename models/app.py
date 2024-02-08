@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 import os
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from .user import User, Products, db  # Import Product model
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, send_from_directory
 import uuid
 
 login_manager = LoginManager()
@@ -95,6 +95,8 @@ def create_app():
     @login_required
     def products():
         user_products = Products.query.filter_by(user_id=current_user.id).all()
+        for product in user_products:
+            print("Product Image Path:", product.image_path)
         return render_template('products.html', user=current_user, user_products=user_products)
     
     @app.route('/add_product', methods=['GET', 'POST'])
@@ -142,6 +144,10 @@ def create_app():
         all_products = Products.query.all()
         return render_template('all_products.html', all_products=all_products)
     
+    @app.route('/serve_image/<filename>', methods=['GET'])
+    def serve_image(filename):
+        return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
     with app.app_context():
         db.create_all()
 
