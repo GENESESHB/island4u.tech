@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 """starting flask"""
 
-from sqlalchemy.orm import relationship
 from flask_migrate import Migrate
-from sqlalchemy import Column, String, Float, Integer, ForeignKey
 import os
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from .user import User, Products, db  # Import Product model
@@ -86,11 +84,8 @@ def create_app():
         user_id = current_user.id
         username = current_user.username
         email = current_user.email
-        return render_template(
-    'user.html',
-    username=username,
-    email=email,
-     user_id=user_id)
+        user_products = Products.query.filter_by(user_id=current_user.id).all()
+        return render_template('user.html', user=current_user, products=user_products)
 
     @app.route('/exit')
     def exit():
@@ -99,9 +94,9 @@ def create_app():
     @app.route('/products')
     @login_required
     def products():
-        user_products = current_user.products
-        return render_template('products.html', user_products=user_products)
-
+        user_products = Products.query.filter_by(user_id=current_user.id).all()
+        return render_template('products.html', user=current_user, user_products=user_products)
+    
     @app.route('/add_product', methods=['GET', 'POST'])
     @login_required
     def add_product():

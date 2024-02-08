@@ -1,31 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
+    <!-- Add your head content, stylesheets, etc. -->
 </head>
 <body>
-    <h1>Your Products</h1>
+    <h1>Welcome, {{ user.username }}!</h1>
 
-    {% if user_products %}
-        <ul>
-            {% for product in user_products %}
-                <li>{{ product.name }}</li>
-                {% if product.image_path %}
-                    <img src="{{ product.image_path }}" alt="{{ product.name }}" style="max-width: 200px; max-height: 200px;">
-                {% endif %}
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No products available.</p>
-    {% endif %}
+    <h2>Your Products:</h2>
 
-    <br>
-    <a href="{{ url_for('add_product') }}">Add Product</a>
-
-    <br>
-    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    {% for product in user_products %}
+        <div class="product">
+            <h3>{{ product.name }}</h3>
+            <p>Price: ${{ product.price }}</p>
+            <p>Number of Rooms: {{ product.num_rooms }}</p>
+            <p>Number of Salons: {{ product.num_salon }}</p>
+            <p>Number of Bathrooms: {{ product.num_bain }}</p>
+            <p>Windows per Chamber: {{ product.window_per_chamber }}</p>
+            <img src="{{ url_for('static', filename=product.image_path) }}" alt="{{ product.name }} Image">
+            <!-- Add other product details as needed -->
+        </div>
+    {% endfor %}
 </body>
 </html>
 
