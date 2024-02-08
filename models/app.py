@@ -142,7 +142,21 @@ def create_app():
     @login_required
     def all_products():
         all_products = Products.query.all()
-        return render_template('all_products.html', all_products=all_products)
+        
+        processed_products = [
+                {
+                    'name': product.name,
+                    'price': product.price,
+                    'num_rooms': product.num_rooms,
+                    'num_salon': product.num_salon,
+                    'num_bain': product.num_bain,
+                    'window_per_chamber': product.window_per_chamber,
+                    'image_path': os.path.basename(product.image_path) if product.image_path else None,
+                }
+                    for product in all_products
+        ]
+
+        return render_template('all_products.html', all_products=processed_products)
     
     @app.route('/serve_image/<filename>', methods=['GET'])
     def serve_image(filename):
