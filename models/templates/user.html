@@ -35,12 +35,11 @@
 				{% for product in user_products %}
 				<div class="card">
 					<img class="product-image" src="{{ url_for('serve_image', filename=product.image_path.split('/')[-1]) }}" alt="Product Image">
+					<i class="fa-solid fa-euro-sign", style="font-size: 50px; margin-right: 20px"></i><p style="font-size: 26px; margin-right: 80px">   {{ product.price }}</p>
 					<div class="product-info">
 						<h3><i class='bx bxs-building-house' ></i>{{ product.name }}</h3>
-						<p><i class="fa-solid fa-euro-sign"></i> Price: ${{ product.price }}</p>
-						<p><i class="fa-solid fa-city"></i> City: {{ product.city }}</p>
+						<p><i class="fa-solid fa-city"></i> City: {{ user.city }}</p>
 						<p><i class="fa-solid fa-bed"></i> Number of Rooms: {{ product.num_rooms }}</p>
-						<p> Number of Salons: {{ product.num_salon }}</p>
 						<p><i class="fa-solid fa-bath"></i> Number of Bathrooms: {{ product.num_bain }}</p>
 						<p><i class='bx bx-window'></i> Windows per Chamber: {{ product.window_per_chamber }}</p>
 					</div>
