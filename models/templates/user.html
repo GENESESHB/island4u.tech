@@ -8,6 +8,7 @@
 		<link rel="icon" href="{{ url_for('static', filename='images/icon.png') }}">
 		<link rel="icon" href="static/images/icon.png">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha384-vnoVe40YO5Db/Y46xi5RXL5JPFREOpXwkjk9aOtBM1y6QKExJKR9a3eDAV+s4vC" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;1,300&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -35,12 +36,13 @@
 				<div class="card">
 					<img class="product-image" src="{{ url_for('serve_image', filename=product.image_path.split('/')[-1]) }}" alt="Product Image">
 					<div class="product-info">
-						<h3>{{ product.name }}</h3>
-						<p>Price: ${{ product.price }}</p>
-						<p>Number of Rooms: {{ product.num_rooms }}</p>
-						<p>Number of Salons: {{ product.num_salon }}</p>
-						<p>Number of Bathrooms: {{ product.num_bain }}</p>
-						<p>Windows per Chamber: {{ product.window_per_chamber }}</p>
+						<h3><i class='bx bxs-building-house' ></i>{{ product.name }}</h3>
+						<p><i class="fa-solid fa-euro-sign"></i> Price: ${{ product.price }}</p>
+						<p><i class="fa-solid fa-city"></i> City: {{ product.city }}</p>
+						<p><i class="fa-solid fa-bed"></i> Number of Rooms: {{ product.num_rooms }}</p>
+						<p> Number of Salons: {{ product.num_salon }}</p>
+						<p><i class="fa-solid fa-bath"></i> Number of Bathrooms: {{ product.num_bain }}</p>
+						<p><i class='bx bx-window'></i> Windows per Chamber: {{ product.window_per_chamber }}</p>
 					</div>
 				</div>
 				{% endfor %}
