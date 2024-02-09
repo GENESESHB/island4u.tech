@@ -90,6 +90,16 @@ header {
   margin-right: 8px;
 }
 
+.product-image {
+	max-width: 400px; /* Set the maximum width to 100% */
+	height: auto;
+	margin-top: 10px;
+	border: 1px solid #ddd; /* Ajoute une bordure autour de l'image */
+	border-radius: 30px; /* Ajoute un arrondi aux coins de la bordure */
+	overflow: hidden; /* Cache tout contenu qui dépasse de la bordure */
+	box-shadow: 0 0 30px rgba(201, 57, 57, 0.3);
+}
+
 @media (max-width: 600px) {
 	.inside {
 		flex: 100%;
@@ -99,7 +109,7 @@ header {
 		width: max-content;
 	}
 	.card {
-		width: 100%; /* Ensure each card takes 100% width */
+		width: max-content; /* Ensure each card takes 100% width */
 		margin: 10px 0;
 	}
         .add-product-button {

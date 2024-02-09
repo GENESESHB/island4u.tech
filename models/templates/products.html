@@ -1,7 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Add your head content, stylesheets, etc. -->
+    <style>
+        .product {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .product img {
+            max-width: 100px;  /* Adjust the max-width of the image */
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+    </style>
+    <!-- Add other head content, stylesheets, etc. -->
 </head>
 <body>
     <h1>Welcome, {{ user.username }}!</h1>
@@ -10,19 +29,16 @@
 
     {% for product in user_products %}
         <div class="product">
-            <h3>{{ product.name }}</h3>
-            <p>Price: ${{ product.price }}</p>
-            <p>Number of Rooms: {{ product.num_rooms }}</p>
-            <p>Number of Salons: {{ product.num_salon }}</p>
-            <p>Number of Bathrooms: {{ product.num_bain }}</p>
-            <p>Windows per Chamber: {{ product.window_per_chamber }}</p>
-	    
-	    {% if product.image_path %}
-	         <a href="">
-			 <img src="{{ url_for('serve_image', filename=product.image_path.split('/')[-1]) }}" alt="Product Image"/>
-		 </a>
-	    {% endif %}
-            <!-- Add other product details as needed -->
+            <img src="{{ url_for('serve_image', filename=product.image_path.split('/')[-1]) }}" alt="Product Image">
+            <div class="product-info">
+                <h3>{{ product.name }}</h3>
+                <p>Price: ${{ product.price }}</p>
+                <p>Number of Rooms: {{ product.num_rooms }}</p>
+                <p>Number of Salons: {{ product.num_salon }}</p>
+                <p>Number of Bathrooms: {{ product.num_bain }}</p>
+                <p>Windows per Chamber: {{ product.window_per_chamber }}</p>
+                <!-- Add other product details as needed -->
+            </div>
         </div>
     {% endfor %}
 </body>

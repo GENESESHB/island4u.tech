@@ -30,20 +30,21 @@
 			<a href="{{ url_for('add_product') }}" class="add-product-button">
 				          <i class="fas fa-plus"></i> Add Product
 			</a>
-			<div class="container">
+
+				{% for product in user_products %}
 				<div class="card">
-					<h2>Card 1</h2>
-					<p>User ID: {{ user_id }}</p>
+					<img class="product-image" src="{{ url_for('serve_image', filename=product.image_path.split('/')[-1]) }}" alt="Product Image">
+					<div class="product-info">
+						<h3>{{ product.name }}</h3>
+						<p>Price: ${{ product.price }}</p>
+						<p>Number of Rooms: {{ product.num_rooms }}</p>
+						<p>Number of Salons: {{ product.num_salon }}</p>
+						<p>Number of Bathrooms: {{ product.num_bain }}</p>
+						<p>Windows per Chamber: {{ product.window_per_chamber }}</p>
+					</div>
 				</div>
-				<div class="card">
-					<h2>Card 2</h2>
-					<p>Username: {{ username }}</p>
-				</div>
-				<div class="card">
-					<h2>Card 3</h2>
-					<p>Email: {{ email }}</p>
-				</div>
-			</div>
+				{% endfor %}
+			
 		</section>
 	</body>
 </html>

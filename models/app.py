@@ -2,6 +2,7 @@
 """starting flask"""
 
 from flask_migrate import Migrate
+from sqlalchemy import asc
 import os
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from .user import User, Products, db  # Import Product model
@@ -15,7 +16,7 @@ migrate = Migrate()
 
 def create_app():
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///imobi.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///imobilier.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = 'HASSANBOUDRAA8@'
     app.config['UPLOAD_FOLDER'] = 'uploads'  # Folder to store uploaded images
@@ -81,11 +82,10 @@ def create_app():
     @app.route('/user')
     @login_required
     def user():
-        user_id = current_user.id
-        username = current_user.username
-        email = current_user.email
-        user_products = Products.query.filter_by(user_id=current_user.id).all()
-        return render_template('user.html', user=current_user, products=user_products)
+        user_products = Products.query.filter_by(user_id=current_user.id).order_by(asc(Products.id)).all()
+        for product in user_products:
+            print("Product Image Path:", product.image_path)
+        return render_template('user.html', user=current_user, user_products=user_products)
 
     @app.route('/exit')
     def exit():
@@ -94,7 +94,7 @@ def create_app():
     @app.route('/products')
     @login_required
     def products():
-        user_products = Products.query.filter_by(user_id=current_user.id).all()
+        user_products = Products.query.filter_by(user_id=current_user.id).order_by(asc(Products.id)).all()
         for product in user_products:
             print("Product Image Path:", product.image_path)
         return render_template('products.html', user=current_user, user_products=user_products)
@@ -141,7 +141,7 @@ def create_app():
     @app.route('/all_products')
     @login_required
     def all_products():
-        all_products = Products.query.all()
+        all_products = Products.query.order_by(asc(Products.id)).all()
         
         processed_products = [
                 {
