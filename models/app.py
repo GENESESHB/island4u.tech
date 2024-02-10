@@ -104,29 +104,31 @@ def create_app():
     def add_product():
         if request.method == 'POST':
             name = request.form['name']
+            city = request.form['city']
             price = float(request.form['price'])
             image_path = save_uploaded_image(request.files['image'])
             user_id = current_user.id
             num_rooms = int(request.form['num_rooms'])
-            num_salon = int(request.form['num_salon'])
+            section = int(request.form['section'])
             num_bain = int(request.form['num_bain'])
-            window_per_chamber = int(request.form['window_per_chamber'])
+            window_per_house = int(request.form['window_per_house'])
             
             new_product = Products(
-                    name=name, 
+                    name=name,
+                    city=city,
                     price=price, 
                     image_path=image_path, 
                     num_rooms=num_rooms, 
-                    num_salon=num_salon, 
+                    section=section, 
                     num_bain=num_bain, 
-                    window_per_chamber=window_per_chamber, 
+                    window_per_house=window_per_house, 
                     user=current_user)
 
             db.session.add(new_product)
             db.session.commit()
 
             flash('Product added successfully.', 'success')
-            return redirect(url_for('products'))
+            return redirect(url_for('user'))
 
         return render_template('add_product.html')
     
@@ -146,11 +148,12 @@ def create_app():
         processed_products = [
                 {
                     'name': product.name,
+                    'city': product.city,
                     'price': product.price,
                     'num_rooms': product.num_rooms,
-                    'num_salon': product.num_salon,
+                    'section': product.section,
                     'num_bain': product.num_bain,
-                    'window_per_chamber': product.window_per_chamber,
+                    'window_per_house': product.window_per_house,
                     'image_path': os.path.basename(product.image_path) if product.image_path else None,
                 }
                     for product in all_products

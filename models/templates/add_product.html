@@ -12,37 +12,42 @@
 
         <input type="hidden" name="user_id" value="{{ current_user.id }}">
 
-        <label for="name">Product Name:</label>
+        <label for="name">Description</label>
         <input type="text" id="name" name="name" required>
 
         <br>
 
-        <label for="price">Product Price:</label>
+	<label for="name">City</label>
+	<input type="text" id="city" name="city" required>
+
+	<br>
+
+        <label for="price"> Price</label>
         <input type="number" id="price" name="price" step="0.01" required>
 
         <br>
 
-	<label for="num_rooms">Number of Rooms:</label>
+	<label for="num_rooms">Number of Rooms in house </label>
 	<input type="number" id="num_rooms" name="num_rooms" required>
 
 	<br>
 
-	<label for="num_salon">Number of Salons:</label>
-	<input type="number" id="num_salon" name="num_salon" required>
+	<label for="section">Home section</label>
+	<input type="number" id="section" name="section" required>
 
 	<br>
 
-	<label for="num_bain">Number of Bathrooms:</label>
+	<label for="num_bain">Number of Bathrooms</label>
 	<input type="number" id="num_bain" name="num_bain" required>
 
 	<br>
 
-	<label for="window_per_chamber">Number of Windows per Room:</label>
-	<input type="number" id="window_per_chamber" name="window_per_chamber" required>
+	<label for="window_per_house">Number of Windows in house</label>
+	<input type="number" id="window_per_house" name="window_per_house" required>
 
 	<br>
 
-        <label for="image">Product Image:</label>
+        <label for="image">House Image</label>
         <input type="file" id="image" name="image" accept="image/*">
 
         <br>
@@ -50,7 +55,7 @@
         <input type="submit" value="Add Product">
 	
 	<br>
-	<a href="{{ url_for('products') }}">Back to Products</a>
+	<a href="{{ url_for('products') }}">Back to user</a>
     </form>
 </body>
 </html>
