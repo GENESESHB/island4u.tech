@@ -77,7 +77,23 @@ def create_app():
     @app.route('/dashboard')
     @login_required
     def dashboard():
-        return render_template('dashboard.html', user=current_user)
+        all_products = Products.query.order_by(asc(Products.id)).all()
+
+        processed_products = [
+                {
+                    'name': product.name,
+                    'city': product.city,
+                    'price': product.price,
+                    'num_rooms': product.num_rooms,
+                    'section': product.section,
+                    'num_bain': product.num_bain,
+                    'window_per_house': product.window_per_house,
+                    'image_path': os.path.basename(product.image_path) if product.image_path else None,
+                }
+                     for product in all_products
+            ]
+
+        return render_template('dashboard.html', all_products=processed_products)
 
     @app.route('/user')
     @login_required
