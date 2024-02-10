@@ -107,14 +107,6 @@ def create_app():
     def exit():
         return render_template('login.html')
 
-    @app.route('/products')
-    @login_required
-    def products():
-        user_products = Products.query.filter_by(user_id=current_user.id).order_by(asc(Products.id)).all()
-        for product in user_products:
-            print("Product Image Path:", product.image_path)
-        return render_template('products.html', user=current_user, user_products=user_products)
-    
     @app.route('/add_product', methods=['GET', 'POST'])
     @login_required
     def add_product():
@@ -155,28 +147,7 @@ def create_app():
             file.save(file_path)
             return file_path
         return None
-    
-    @app.route('/all_products')
-    @login_required
-    def all_products():
-        all_products = Products.query.order_by(asc(Products.id)).all()
-        
-        processed_products = [
-                {
-                    'name': product.name,
-                    'city': product.city,
-                    'price': product.price,
-                    'num_rooms': product.num_rooms,
-                    'section': product.section,
-                    'num_bain': product.num_bain,
-                    'window_per_house': product.window_per_house,
-                    'image_path': os.path.basename(product.image_path) if product.image_path else None,
-                }
-                    for product in all_products
-        ]
-
-        return render_template('all_products.html', all_products=processed_products)
-    
+     
     @app.route('/serve_image/<filename>', methods=['GET'])
     def serve_image(filename):
         return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
