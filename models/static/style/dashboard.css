@@ -102,39 +102,28 @@ header {
 	box-shadow: 0 0 30px rgba(201, 57, 57, 0.3);
 }
 .product-info {
-	margin: 20px;
-	padding: 30px;
+	margin-top: 20px;
+	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 20px;
 	display: flex;
 	flex-direction: column;
 	font-size: 20px;
+	align-items: CENTER;
+	justify-content: flex-start;
+	flex-wrap: wrap;
 }
-/*
-.product-info h3,
-.product-info p {
-	border: white;
-	border-radius: 25px;
-	background-color: white;
-	padding: 8px; 
-	margin-bottom: 8px;
-}
-.product-info i {
-	font-size: 35px;
-} */
+
+
 @media (max-width: 600px) {
-	.inside {
-		flex: 100%;
-	}
-	.container {
-		flex-direction: column; /* Set to row to display cards horizontally */
-		width: max-content;
-	}
 	.card {
-		width: max-content; /* Ensure each card takes 100% width */
-		margin: 10px 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center; /* Center content horizontally */
 	}
-        .add-product-button {
-                width: 100%;
-        }
+	.product-image {
+		max-width: 90%; /* Make the image responsive */
+		height: auto;
+		align-items: center;
+	}
 }

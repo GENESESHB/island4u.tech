@@ -34,29 +34,34 @@
 
 				{% for product in user_products %}
 				<div class="card">
+				     {% if product.image_path %}
 					<img class="product-image" src="{{ url_for('serve_image', filename=product.image_path.split('/')[-1]) }}" alt="Product Image">
+				     {% else %}
+					      <p>No Image Available</p>
+				     {% endif %}
 					<a style="max-width: 300px; margin-right: 15px;">
 						<i class='bx bx-key' style="font-size: 38px"></i><p>   {{ product.name }} </p>
 					</a>
 					<div class="product-info">
-						<li style="border-bottom: 1px solid #ccc; margin-bottom: 30px;">
-							<i class="fa-solid fa-sack-dollar" style="font-size: 35px;"></i>   {{ product.price }} dhs 
-						</li>
-						<p style="margin-bottom: 30px;">
-						     <i class='bx bx-buildings'></i>   {{ product.city }}   
-						</p>
-						<a style="border: 1px solid #ccc; border-radius: 20px; padding: 20px;">
-						   <p style="border-bottom: 1px solid #ccc; margin-bottom: 20px;">
-						        <i class="fa-solid fa-bed"></i> {{ product.num_rooms }}
-							    <i class="fa-solid fa-grip-lines-vertical" style="color: #ccc; font-size: 25px; margin-left: 30px; margin-right: 30px"></i>
-						        <i class="fa-solid fa-ruler-combined"></i>    {{ product.section }} m^2
-						   </p>
-						   <p style="margin-bottom: 20px; margin-bottom: 20px;">
-						        <i class="fa-solid fa-bath"></i>    {{ product.num_bain }}
-							    <i class="fa-solid fa-grip-lines-vertical" style="color: #ccc; font-size: 25px; margin-left: 30px; margin-right: 30px;"></i>
-						        <i class="fa-solid fa-warehouse"></i>     {{ product.window_per_house }}
-						   </p>
-						</a>
+						       <li style="border-bottom: 1px solid #ccc; margin-bottom: 30px;">
+							        <i class="fa-solid fa-sack-dollar" style="font-size: 35px;"></i>   {{ product.price }} dhs 
+						       </li>
+						       <p style="margin-bottom: 30px;">
+						                <i class='bx bx-buildings'></i>   {{ product.city }}   
+						       </p>
+						       <a style="border: 1px solid #ccc; border-radius: 20px; padding: 20px;">
+						                 <p style="border-bottom: 1px solid #ccc; margin-bottom: 20px;">
+						                        <i class="fa-solid fa-bed"></i> {{ product.num_rooms }}
+							                <i class="fa-solid fa-grip-lines-vertical" style="color: #ccc; font-size: 25px; margin-left: 30px; margin-right: 30px"></i>
+						                        <i class="fa-solid fa-ruler-combined"></i>    {{ product.section }} m²
+						                 </p>
+						                 <p style="margin-bottom: 20px; margin-bottom: 20px;">
+						                        <i class="fa-solid fa-bath"></i>    {{ product.num_bain }}
+							                <i class="fa-solid fa-grip-lines-vertical" style="color: #ccc; font-size: 25px; margin-left: 30px; margin-right: 30px;"></i>
+						                        <i class="fa-solid fa-warehouse"></i>     {{ product.window_per_house }}
+						                 </p>
+						       </a>
+					 
 					</div>
 				</div>
 				{% endfor %}
