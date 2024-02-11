@@ -31,7 +31,7 @@
 				{% for product in all_products %}
 				<div class="product">
 					 {% if product.image_path %}
-					 <a href="">
+					 <a href="{{ url_for('product_detail', product_id=product['product_id_string']) }}">
 						 <img src="{{ url_for('serve_image', filename=product.image_path.split('/')[-1]) }}" alt="Product Image"/>
 					 </a>
 					 {% endif %}

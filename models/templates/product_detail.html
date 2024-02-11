@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... (your existing head content) ... -->
+</head>
+<body>
+    <header>
+        <!-- ... (your header content for the product detail page) ... -->
+    </header>
+    <section class="product-detail">
+        <div class="container">
+            <h2>Product Detail</h2>
+            <div class="product">
+                {% if product.image_path %}
+                    <img src="{{ url_for('serve_image', filename=product.image_path.split('/')[-1]) }}" alt="Product Image"/>
+                {% endif %}
+                <h3>{{ product.city }} , MAROC</h3>
+                <p><i class="fa-solid fa-ruler-combined"></i> {{ product.section }} m²</p>
+                <p><i class="fa-solid fa-sack-dollar"></i> {{ product.price }} dhs</p>
+                <!-- Add more details as needed -->
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+

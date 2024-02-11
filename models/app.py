@@ -89,6 +89,7 @@ def create_app():
                     'num_bain': product.num_bain,
                     'window_per_house': product.window_per_house,
                     'image_path': os.path.basename(product.image_path) if product.image_path else None,
+                    'product_id_string': str(product.id),
                 }
                      for product in all_products
             ]
@@ -120,7 +121,7 @@ def create_app():
             section = int(request.form['section'])
             num_bain = int(request.form['num_bain'])
             window_per_house = int(request.form['window_per_house'])
-            
+
             new_product = Products(
                     name=name,
                     city=city,
@@ -139,7 +140,7 @@ def create_app():
             return redirect(url_for('user'))
 
         return render_template('add_product.html')
-    
+
     def save_uploaded_image(file):
         if file:
             file_name = str(uuid.uuid4()) + file.filename
@@ -147,7 +148,34 @@ def create_app():
             file.save(file_path)
             return file_path
         return None
-     
+    def get_product_details(product_id):
+        # Retrieve product details from the database based on the product_id
+        product = Products.query.get(product_id)
+
+        if not product:
+            # Handle the case where the product with the given id is not found
+            flash('Product not found.', 'error')
+            return redirect(url_for('dashboard'))
+
+            # Process the product details as needed
+        processed_product = {
+                'name': product.name,
+                'city': product.city,
+                'price': product.price,
+                'num_rooms': product.num_rooms,
+                'section': product.section,
+                'num_bain': product.num_bain,
+                'window_per_house': product.window_per_house,
+                'image_path': os.path.basename(product.image_path) if product.image_path else None,
+                'product_id_string': str(product.id),
+                }
+        return processed_product
+
+    @app.route('/product/<string:product_id>')
+    def product_detail(product_id):
+        product = get_product_details(product_id)
+        return render_template('product_detail.html', product=product)
+
     @app.route('/serve_image/<filename>', methods=['GET'])
     def serve_image(filename):
         return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
