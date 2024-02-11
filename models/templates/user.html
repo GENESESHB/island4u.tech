@@ -61,7 +61,12 @@
 						                        <i class="fa-solid fa-warehouse"></i>     {{ product.window_per_house }}
 						                 </p>
 						       </a>
-					 
+						       <form action="{{ url_for('delete_product', product_id=product.id) }}" method="post"
+							       onsubmit="return confirm('Are you sure you want to delete this product?')">
+							       <button type="submit" class="delete-product-button">
+								       <i class="fas fa-trash"></i> Delete Product
+							       </button>
+						       </form>
 					</div>
 				</div>
 				{% endfor %}

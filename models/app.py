@@ -9,6 +9,7 @@ from .user import User, Products, db  # Import Product model
 from flask import Flask, render_template, request, redirect, url_for, flash, send_from_directory
 import uuid
 
+
 login_manager = LoginManager()
 login_manager.login_view = 'login'
 migrate = Migrate()
@@ -148,6 +149,7 @@ def create_app():
             file.save(file_path)
             return file_path
         return None
+    
     def get_product_details(product_id):
         # Retrieve product details from the database based on the product_id
         product = Products.query.get(product_id)
@@ -170,6 +172,26 @@ def create_app():
                 'product_id_string': str(product.id),
                 }
         return processed_product
+
+    @app.route('/delete_product/<string:product_id>', methods=['POST'])
+    @login_required
+    def delete_product(product_id):
+        product = Products.query.get(product_id)
+        if not product:
+            flash('Product not found.', 'error')
+            return redirect(url_for('dashboard'))
+        
+        if product.user_id != current_user.id:
+            flash('Permission denied.', 'error')
+            return redirect(url_for('dashboard'))
+        
+        # Delete the product from the database
+        db.session.delete(product)
+        db.session.commit()
+        
+        flash('Product deleted successfully.', 'success')
+        
+        return redirect(url_for('user'))
 
     @app.route('/product/<string:product_id>')
     def product_detail(product_id):
