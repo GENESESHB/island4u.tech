@@ -36,7 +36,7 @@ def create_app():
         if current_user.is_authenticated:
             return redirect(url_for('dashboard'))
         else:
-            return render_template('login.html')
+            return render_template('landing.html')
 
     @app.route('/signup', methods=['GET', 'POST'])
     def signup():
@@ -149,7 +149,7 @@ def create_app():
             file.save(file_path)
             return file_path
         return None
-    
+
     def get_product_details(product_id):
         # Retrieve product details from the database based on the product_id
         product = Products.query.get(product_id)

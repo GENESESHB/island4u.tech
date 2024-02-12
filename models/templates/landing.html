@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" href="{{ url_for('static', filename='style/dashboard.css') }}">
+                <script src="{{ url_for('static', filename='script/dashboard.js') }}" defer></script>
+                <link rel="icon" href="{{ url_for('static', filename='images/icon.png') }}">
+                <link rel="icon" href="static/images/icon.png">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;1,300&display=swap" rel="stylesheet">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.21.0/font/bootstrap-icons.css" rel="stylesheet">
+                <title>Dashboard</title>
+        </head>
+        <body>
+                <header>
+                        <div class="logo">
+                                <img src="./static/images/icon.png" alt="logo" >
+                        </div>
+                        <div class="nav-icon">
+                                <a onclick="window.location.href='{{ url_for('dashboard') }}'"><i class='bx bx-home'></i></a>
+                                <a onclick="window.location.href='{{ url_for('user') }}'"><i class='bx bx-user'></i></a>
+                                <a onclick="window.location.href='{{ url_for('exit') }}'"><i class='bx bx-exit'></i></a>
+                                <div class="bx bx-menu" id="menu-icon"></div>
+                        </div>
+                </header>
+                <section class="inside">
+                        <div class="container">
+                                <div class="product">
+                                         <a href="">
+                                                 <img src="" alt="Product Image"/>
+                                         </a>
+                                         
+                                         <h3 style="margin: 10px"><p>   meknes , MAROC</p></h3>
+                                         <p style="font-size: 20px; margin-bottom: 6px; margin-left: 15px;"><i class="fa-solid fa-ruler-combined"></i>    150 m²</p>
+                                         <p style="font-size: 18px; margin-bottom: 10px; margin-left: 15px;"><i class="fa-solid fa-sack-dollar"></i>   140 dhs</p>
+                                </div>
+                                <div class="product">
+                                         <a href="">
+                                                 <img src="" alt="Product Image"/>
+                                         </a>
+
+                                         <h3 style="margin: 10px"><p>   meknes , MAROC</p></h3>
+                                         <p style="font-size: 20px; margin-bottom: 6px; margin-left: 15px;"><i class="fa-solid fa-ruler-combined"></i>    150 m²</p>
+                                         <p style="font-size: 18px; margin-bottom: 10px; margin-left: 15px;"><i class="fa-solid fa-sack-dollar"></i>   140 dhs</p>
+                                </div>
+                                <div class="product">
+                                         <a href="">
+                                                 <img src="" alt="Product Image"/>
+                                         </a>
+
+                                         <h3 style="margin: 10px"><p>   meknes , MAROC</p></h3>
+                                         <p style="font-size: 20px; margin-bottom: 6px; margin-left: 15px;"><i class="fa-solid fa-ruler-combined"></i>    150 m²</p>
+                                         <p style="font-size: 18px; margin-bottom: 10px; margin-left: 15px;"><i class="fa-solid fa-sack-dollar"></i>   140 dhs</p>
+                                </div>
+                                <div class="product">
+                                         <a href="">
+                                                 <img src="" alt="Product Image"/>
+                                         </a>
+
+                                         <h3 style="margin: 10px"><p>   meknes , MAROC</p></h3>
+                                         <p style="font-size: 20px; margin-bottom: 6px; margin-left: 15px;"><i class="fa-solid fa-ruler-combined"></i>    150 m²</p>
+                                         <p style="font-size: 18px; margin-bottom: 10px; margin-left: 15px;"><i class="fa-solid fa-sack-dollar"></i>   140 dhs</p>
+                                </div>
+                                <div class="product">
+                                         <a href="">
+                                                 <img src="" alt="Product Image"/>
+                                         </a>
+
+                                         <h3 style="margin: 10px"><p>   meknes , MAROC</p></h3>
+                                         <p style="font-size: 20px; margin-bottom: 6px; margin-left: 15px;"><i class="fa-solid fa-ruler-combined"></i>    150 m²</p>
+                                         <p style="font-size: 18px; margin-bottom: 10px; margin-left: 15px;"><i class="fa-solid fa-sack-dollar"></i>   140 dhs</p>
+                                </div>
+                        </div>
+                </section>
+    <footer>
+        <p>&copy; 2024 My Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
