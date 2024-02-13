@@ -13,7 +13,10 @@
         <input type="hidden" name="user_id" value="{{ current_user.id }}">
 
         <label for="name">Description</label>
-        <input type="text" id="name" name="name" required>
+	<div style="position: relative;">
+		 <i class="fas fa-info-circle" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);"></i>
+                 <input type="text" id="name" name="name" placeholder="Enter your description here" required>
+	</div>
 
         <br>
 

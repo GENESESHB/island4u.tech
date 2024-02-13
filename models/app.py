@@ -5,7 +5,8 @@ from flask_migrate import Migrate
 from sqlalchemy import asc
 import os
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-from .user import User, Products, db  # Import Product model
+from .user import User, Products, db
+from .db import get_user_data
 from flask import Flask, render_template, request, redirect, url_for, flash, send_from_directory
 import uuid
 
@@ -88,7 +89,7 @@ def create_app():
                     'num_rooms': product.num_rooms,
                     'section': product.section,
                     'num_bain': product.num_bain,
-                    'window_per_house': product.window_per_house,
+                   'window_per_house': product.window_per_house,
                     'image_path': os.path.basename(product.image_path) if product.image_path else None,
                     'product_id_string': str(product.id),
                 }
@@ -97,13 +98,14 @@ def create_app():
 
         return render_template('dashboard.html', all_products=processed_products)
 
-    @app.route('/user')
+    @app.route('/user/<username>')
     @login_required
-    def user():
+    def user(username):
+        user_data = get_user_data(username)
         user_products = Products.query.filter_by(user_id=current_user.id).order_by(asc(Products.id)).all()
         for product in user_products:
             print("Product Image Path:", product.image_path)
-        return render_template('user.html', user=current_user, user_products=user_products)
+        return render_template('user.html', user=current_user, username=username, user_products=user_products, user_data=user_data)
 
     @app.route('/exit')
     def exit():
@@ -196,7 +198,8 @@ def create_app():
     @app.route('/product/<string:product_id>')
     def product_detail(product_id):
         product = get_product_details(product_id)
-        return render_template('product_detail.html', product=product)
+        user_data = get_user_data(current_user.username)
+        return render_template('product_detail.html', product=product, user_data=user_data)
 
     @app.route('/serve_image/<filename>', methods=['GET'])
     def serve_image(filename):

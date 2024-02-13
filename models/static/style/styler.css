@@ -76,6 +76,9 @@ h1 {
 	font-size: 14px;
 	color; black;
 }
+#name {
+	height: 100px; /* Set the desired width for the description input */
+}
 
 .github-button:hover {
 	background-color: #218838; /* Darker green on hover */
