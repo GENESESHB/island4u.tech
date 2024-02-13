@@ -67,6 +67,14 @@ header {
 	border-radius: 5px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+.acourd {
+	padding-top: 110px;
+	text-align: center;
+}
+.acourd p {
+	font-size: 25px;
+}
+
 .add-product-button {
   display: flex;
   align-items: center;
@@ -115,14 +123,6 @@ header {
 	justify-content: space-around;
 	padding: 20px;
 }
-.acourd {
-	padding-top: 110px;
-	text-align: center;
-}
-.acourd p {
-	font-size: 25px;
-}
-
 .product {
 	width: 270px; /* Adjust the width as needed to fit four products in a row */
 	margin: 5px;

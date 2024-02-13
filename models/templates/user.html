@@ -27,11 +27,13 @@
 				<div class="bx bx-menu" id="menu-icon"></div>
 			</div>
 		</header>
+		<a href="{{ url_for('add_product') }}">
+			<div class="acourd">
+				<i class="fas fa-plus-circle add-product-icon" style="font-size: 30px; "> </i>
+				<p>Add your house to sale</p>
+			</div>
+		</a>
 		<section class="inside">
-			<a href="{{ url_for('add_product') }}" class="add-product-button">
-				          <i class="fas fa-plus"></i> Add Product
-			</a>
-
 				{% for product in user_products %}
 				<div class="card">
 				     {% if product.image_path %}
@@ -73,5 +75,8 @@
 			
 		</section>
 	</body>
+	<footer>
+		<p>&copy; 2024 Hassan BOUDRAA. All rights reserved.</p>
+	</footer>
 </html>
 
