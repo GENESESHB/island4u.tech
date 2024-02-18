@@ -140,6 +140,13 @@ header {
     overflow: hidden; /* Cache tout contenu qui dépasse de la bordure */
     box-shadow: 0 0 30px rgba(201, 57, 57, 0.3);
 }
+.video {
+        position: relative;
+        width: 80%; /* Adjust as needed */
+        margin: 0 auto; /* Center the container */
+}
+
+
 @media (max-width: 600px) {
 	.card {
 		display: flex;
