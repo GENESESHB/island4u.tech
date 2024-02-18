@@ -13,42 +13,42 @@
         <input type="hidden" name="user_id" value="{{ current_user.id }}">
 
         <label for="name">Description</label>
-	<div style="position: relative;">
-		 <i class="fas fa-info-circle" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);"></i>
+        <div style="position: relative;">
+                 <i class="fas fa-info-circle" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);"></i>
                  <input type="text" id="name" name="name" placeholder="Enter your description here" required>
-	</div>
+        </div>
 
         <br>
 
-	<label for="name">City</label>
-	<input type="text" id="city" name="city" required>
+        <label for="name">City</label>
+        <input type="text" id="city" name="city" required>
 
-	<br>
+        <br>
 
         <label for="price"> Price</label>
         <input type="number" id="price" name="price" step="0.01" required>
 
         <br>
 
-	<label for="num_rooms">Number of Rooms in house </label>
-	<input type="number" id="num_rooms" name="num_rooms" required>
+        <label for="num_rooms">Number of Rooms in house </label>
+        <input type="number" id="num_rooms" name="num_rooms" required>
 
-	<br>
+        <br>
 
-	<label for="section">Home section</label>
-	<input type="number" id="section" name="section" required>
+        <label for="section">Home section</label>
+        <input type="number" id="section" name="section" required>
 
-	<br>
+        <br>
 
-	<label for="num_bain">Number of Bathrooms</label>
-	<input type="number" id="num_bain" name="num_bain" required>
+        <label for="num_bain">Number of Bathrooms</label>
+        <input type="number" id="num_bain" name="num_bain" required>
 
-	<br>
+        <br>
 
-	<label for="window_per_house">Number of Windows in house</label>
-	<input type="number" id="window_per_house" name="window_per_house" required>
+        <label for="window_per_house">Number of Windows in house</label>
+        <input type="number" id="window_per_house" name="window_per_house" required>
 
-	<br>
+        <br>
 
         <label for="image">House Image</label>
         <input type="file" id="image" name="image" accept="image/*" required >
@@ -56,9 +56,9 @@
         <br>
 
         <input type="submit" value="Add Product">
-	
-	<br>
-	<a href="{{ url_for('user') }}">Back to user</a>
+
+        <br>
+        <a href="{{ url_for('user', username=current_user.username) }}">Back to user</a>
     </form>
 </body>
 </html>
