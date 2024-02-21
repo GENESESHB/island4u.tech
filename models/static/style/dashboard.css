@@ -116,7 +116,7 @@ header {
 	padding: 20px;
 }
 .acourd {
-	padding-top: 110px;
+	padding-top: 10px;
 	text-align: center;
 }
 .acourd p {
@@ -140,6 +140,21 @@ header {
     overflow: hidden; /* Cache tout contenu qui dépasse de la bordure */
     box-shadow: 0 0 30px rgba(201, 57, 57, 0.3);
 }
+.cover-image {
+	padding-top: 90px;
+}
+.plus-button {
+    position: absolute;
+    bottom: 10px; /* Adjust the distance from the bottom as needed */
+    left: 10px; /* Adjust the distance from the left as needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background color */
+    color: white; /* Set the text color */
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+}    
+
 @media (max-width: 600px) {
 	.card {
 		display: flex;

@@ -92,6 +92,7 @@ def create_app():
                    'window_per_house': product.window_per_house,
                     'image_path': os.path.basename(product.image_path) if product.image_path else None,
                     'product_id_string': str(product.id),
+                    'username': product.user.username
                 }
                      for product in all_products
             ]
@@ -102,9 +103,14 @@ def create_app():
     @login_required
     def user(username):
         user_data = get_user_data(username)
-        user_products = Products.query.filter_by(user_id=current_user.id).order_by(asc(Products.id)).all()
+        if not user_data:
+            flash('User not found.', 'error')
+            return redirect(url_for('dashboard'))
+
+        user_products = Products.query.filter_by(user_id=user_data.id).order_by(asc(Products.id)).all()
         for product in user_products:
             print("Product Image Path:", product.image_path)
+
         return render_template('user.html', user=current_user, username=username, user_products=user_products, user_data=user_data)
 
     @app.route('/exit')
@@ -140,7 +146,7 @@ def create_app():
             db.session.commit()
 
             flash('Product added successfully.', 'success')
-            return redirect(url_for('user'))
+            return redirect(url_for('user', username=current_user.username))
 
         return render_template('add_product.html')
 
@@ -172,6 +178,7 @@ def create_app():
                 'window_per_house': product.window_per_house,
                 'image_path': os.path.basename(product.image_path) if product.image_path else None,
                 'product_id_string': str(product.id),
+                'username': product.user.username
                 }
         return processed_product
 
@@ -193,7 +200,7 @@ def create_app():
         
         flash('Product deleted successfully.', 'success')
         
-        return redirect(url_for('user'))
+        return redirect(url_for('user', username=current_user.username))
 
     @app.route('/product/<string:product_id>')
     def product_detail(product_id):

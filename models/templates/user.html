@@ -27,6 +27,20 @@
                                 <div class="bx bx-menu" id="menu-icon"></div>
                         </div>
                 </header>
+		<section>
+			<div class="cover-image" style="height: 200px;">
+				<button class="plus-button" onclick="window.location.href='{{ url_for('add_product') }}'">
+					<i class="fas fa-plus"></i>
+				</button>
+			</div>
+		</section>
+		<section class="user-info">
+			 <div class="user-details">
+				 <h2>{{ user_data.username }}</h2>
+				 <p>Email: {{ user_data.email }}</p>
+								             <!-- Add any other user information you want to display -->
+			 </div>
+		</section>
                 <a href="{{ url_for('add_product') }}">
                         <div class="acourd">
                                 <i class="fas fa-plus-circle add-product-icon" style="font-size: 30px; "> </i>
