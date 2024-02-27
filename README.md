@@ -1,7 +1,25 @@
 # PROJECT IMOBILIER
 
+# login   👨🏼‍💻
+![Island Logo](models/static/readmeimages/login.png)
 
-### `app.py` (Flask Application)
+# landing_page  👋🏻
+![Island Logo](models/static/readmeimages/landing.png)
+
+# dashboard  🏡
+![Island Logo](models/static/readmeimages/dashboard.png)
+
+# user_profile   👨🏼‍💼
+![Island Logo](models/static/readmeimages/user.png)
+
+# add_prduct
+![Island Logo](models/static/readmeimages/'WhatsApp Image 2024-02-27 at 20.32.58_e3aa2f52.jpg')
+
+# product_detail
+![Island Logo](models/static/readmeimages/II.png)
+
+
+### `app.py` (Flask Application) 🐍
 
 1. **Shebang Line:**
    ```python
