@@ -140,20 +140,34 @@ header {
     overflow: hidden; /* Cache tout contenu qui dépasse de la bordure */
     box-shadow: 0 0 30px rgba(201, 57, 57, 0.3);
 }
-.cover-image {
-	padding-top: 90px;
+.cover-container,
+.user-image-container {
+    position: relative;
+    padding-top: 90px;
 }
-.plus-button {
+
+.cover-image,
+.user-image {
+    height: 200px; /* Set your desired height */
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #fff; /* Add border or styling as needed */
+}
+
+.edit-button {
     position: absolute;
-    bottom: 10px; /* Adjust the distance from the bottom as needed */
-    left: 10px; /* Adjust the distance from the left as needed */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background color */
-    color: white; /* Set the text color */
-    padding: 10px;
-    border-radius: 4px;
+    bottom: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    background-color: #3498db; /* Button background color */
+    color: #fff; /* Button text color */
+    padding: 5px 10px;
+    border: none;
     cursor: pointer;
-    display: inline-block;
-}    
+}
+
+.edit-button i {
+    margin-right: 5px;
+}
 
 @media (max-width: 600px) {
 	.card {
