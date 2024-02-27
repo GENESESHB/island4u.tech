@@ -13,7 +13,7 @@
 ![Island Logo](models/static/readmeimages/user.png)
 
 # add_prduct
-![Island Logo](models/static/readmeimages/'WhatsApp Image 2024-02-27 at 20.32.58_e3aa2f52.jpg')
+![Island Logo](models/static/readmeimages/addproducts.png)
 
 # product_detail
 ![Island Logo](models/static/readmeimages/II.png)
