@@ -32,17 +32,15 @@
 				<!-- Your cover image content goes here -->
 			</div>
 			<button class="edit-button" onclick="window.location.href='{{ url_for('exit') }}'">
-				<i class="fas fa-pencil-alt"></i> Edit Cover
+				<i class="fas fa-pencil-alt"></i>
 			</button>
 		</div>
-
 		<div class="user-image-container">
 			<div class="user-image">
-				            <!-- Your user image content goes here -->
+				<button class="edit-button" onclick="window.location.href='{{ url_for('exit') }}'">
+					<i class="fas fa-pencil-alt"></i>
+				</button>
 			</div>
-			<button class="edit-button" onclick="window.location.href='{{ url_for('exit') }}'">
-				<i class="fas fa-pencil-alt"></i> Edit Profile
-			</button>
 		</div>
 
                 <a href="{{ url_for('add_product') }}">

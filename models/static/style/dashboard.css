@@ -140,34 +140,66 @@ header {
     overflow: hidden; /* Cache tout contenu qui dépasse de la bordure */
     box-shadow: 0 0 30px rgba(201, 57, 57, 0.3);
 }
-.cover-container,
-.user-image-container {
+.cover-container {
+    display: center;
     position: relative;
     padding-top: 90px;
 }
 
-.cover-image,
-.user-image {
-    height: 200px; /* Set your desired height */
+.cover-image {
+    height: 350px;
+    background-position: center;
     background-size: cover;
     background-position: center;
-    border: 2px solid #fff; /* Add border or styling as needed */
+    border-bottom: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.user-image-container {
+    position: relative;
+    padding-top: -10px;
+    overflow: hidden;
+    margin-bottom: 40px;
+  
+}
+
+.user-image { 
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid #ccc;
+    position: relative;
 }
 
 .edit-button {
     position: absolute;
-    bottom: 10px; /* Adjust as needed */
-    right: 10px; /* Adjust as needed */
-    background-color: #3498db; /* Button background color */
-    color: #fff; /* Button text color */
+    bottom: 10px;
+    right: 10px;
+    background-color: #74DBA9;
     padding: 5px 10px;
     border: none;
+    border-radius: 50px;
     cursor: pointer;
 }
 
 .edit-button i {
     margin-right: 5px;
 }
+.user-image .edit-button { 
+    position: absolute;
+    bottom: 10px;
+    right: 0px;
+    transform: translate(-50%, -50%);
+    background-color: #74DBA9;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%; /* Ensure the button is also circular */
+}
+
+
 
 @media (max-width: 600px) {
 	.card {
