@@ -34,21 +34,23 @@
 			    <i class="fa-solid fa-camera" onclick="openModal('myModal2')"></i>
 		    </div>
 		</div>
-		<div class="modal" id="myModal1">
-			<div class="modal-content">
+		<div class="modal" id="myModal1" onclick="closeModal('myModal1')">
+			<div class="modal-content" onclick="event.stopPropagation();">
 				<span class="close" onclick="closeModal('myModal1')">&times;</span>
 				<a>
 					<p>-------</p>
-					<input class="coverimage">
+					<input type="file" class="coverimage" onchange="displayImage('coverPreview1', this)" style="width: 100%; border: 1px solid #ccc; border-radius: 10px; background-color: #edf6f9; display: flex; align-items: center;">
+					<img src="" alt="Cover Photo" id="coverPreview1" style="max-width: 40%; border: 1px solid #ccc;  margin-top: 30px; border-radius: 10px; display: none;">
 				</a>
 			</div>
 		</div>
-                <div class="modal" id="myModal2">
-                        <div class="modal-content">
+                <div class="modal" id="myModal2" onclick="closeModal('myModal2')">
+			<div class="modal-content" onclick="event.stopPropagation();">
                                 <span class="close" onclick="closeModal('myModal2')">&times;</span>
 			        <a>
 					<p>-------</p>
-					<input class="profilimage">
+					<input type="file" class="profilimage" onchange="displayImage('profilePreview2', this)">
+					<img src="" alt="Profile Photo" id="profilePreview2" style="max-width: 100%; display: none;">
 				</a>
                         </div>
                 </div>
