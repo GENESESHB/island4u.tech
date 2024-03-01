@@ -172,6 +172,39 @@ header {
     font-size: 25px;
     border-radius: 50%;
 }
+.modal {
+    display: none;
+    position: fixed;
+    top: 30%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*background-color: rgba(255, 0, 0, 0.5);  Semi-transparent red background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: rgb(150, 128, 128); /* Set the background color of the modal content */
+    padding: 20px;
+    border-radius: 5px;
+    color: white; /* Set the text color for better visibility */
+    text-align: center;
+    max-width: 400px; /* Set a maximum width for the modal content */
+    width: 100%;
+    margin: auto; /* Center the modal content horizontally */
+}
+
+.close {
+    position: relative;
+    top: 10px;
+    left: 0%; 
+    font-size: 20px;
+    cursor: pointer;
+    color: white; /* Set the text color for better visibility */
+}
+
 
 
 @media (max-width: 600px) {

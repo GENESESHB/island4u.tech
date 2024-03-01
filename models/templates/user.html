@@ -4,7 +4,8 @@
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link rel="stylesheet" href="{{ url_for('static', filename='style/dashboard.css') }}">
-                <script src="{{ url_for('static', filename='script/dashboard.js') }}" defer></script>
+		<script src="{{ url_for('static', filename='script/script.js') }}" defer></script>
+		<script src="{{ url_for('static', filename='script/dashboard.js') }}" defer></script>
                 <link rel="icon" href="{{ url_for('static', filename='images/icon.png') }}">
                 <link rel="icon" href="static/images/icon.png">
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,11 +29,25 @@
                         </div>
                 </header>
 		<div class="container1">
-			<i class="fa-solid fa-pen"></i>
-			<div class="circle">
-				<i class="fa-solid fa-camera"></i>
+		    <i class="fa-solid fa-pen" onclick="openModal('myModal1')"></i>
+		    <div class="circle">
+			    <i class="fa-solid fa-camera" onclick="openModal('myModal2')"></i>
+		    </div>
+		</div>
+		<div class="modal" id="myModal1">
+			<div class="modal-content">
+				<span class="close" onclick="closeModal('myModal1')">&times;</span>
+				<h2>Modal Content 1</h2>
+				<p>This is the content of Modal 1.</p>
 			</div>
 		</div>
+                <div class="modal" id="myModal2">
+                        <div class="modal-content">
+                                <span class="close" onclick="closeModal('myModal2')">&times;</span>
+                                <h2>Modal Content 2</h2>
+                                <p>This is the content of Modal 1.</p>
+                        </div>
+                </div>
                 <a href="{{ url_for('add_product') }}">
                         <div class="acourd">
                                 <i class="fas fa-plus-circle add-product-icon" style="font-size: 30px; "> </i>
