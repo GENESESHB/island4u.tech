@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from sqlalchemy import asc
 import os
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-from .user import User, Products, db
+from .user import User, Products, Iprofile, Icover, db
 from .db import get_user_data
 from flask import Flask, render_template, request, redirect, url_for, flash, send_from_directory
 import uuid
@@ -197,10 +197,27 @@ def create_app():
         # Delete the product from the database
         db.session.delete(product)
         db.session.commit()
-        
+
         flash('Product deleted successfully.', 'success')
-        
+
         return redirect(url_for('user', username=current_user.username))
+
+    @app.route('/add_imageprofile', methods=['POST'])
+    @login_required
+    def add_imageprofile():
+        if request.method == 'POST':
+            image_path = save_uploaded_image(request.files['image'])
+            user_id = current_user.id
+            image_profile = Iprofile(
+                    imageprofile_path=image_path,
+                    user=current_user)
+
+            db.session.add(image_profile)
+            db.session.commit()
+
+            flash('Product added successfully.', 'success')
+            return redirect(url_for('user', username=current_user.username))
+        return render_template('add_product.html')
 
     @app.route('/product/<string:product_id>')
     def product_detail(product_id):

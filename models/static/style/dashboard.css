@@ -168,7 +168,7 @@ header {
     margin-bottom: 10px;
     margin-left: 95%;
     align-self: flex-end;
-    color: red;
+    color: #000000;
     font-size: 25px;
     border-radius: 50%;
 }
@@ -210,6 +210,44 @@ header {
 }
 .modal-content span.close {
     margin-bottom: 10px; /* Adjust the value to your preference */
+}
+/* Style for file input label with icon */
+.file-label {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+/* Center the content inside the file input label */
+.file-label i {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Hide the default file input styling */
+.file-label input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-bottom: 20px;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    /* Add this style to visually hide the file input */
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* Style for image preview */
+.preview-image {
+    max-width: 40%;
+    border: 1px solid #ccc;
+    margin-top: 30px;
+    border-radius: 10px;
+    display: none;
 }
 
 @media (max-width: 600px) {

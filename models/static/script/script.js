@@ -27,9 +27,11 @@ function displayImage(previewId, input) {
             preview.style.display = 'block';
         };
         reader.readAsDataURL(file);
+	console.log('Displaying image preview');
     } else {
         preview.src = '';
         preview.style.display = 'none';
+	console.log('No file selected');
     }
 }
 

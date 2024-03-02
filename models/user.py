@@ -40,3 +40,16 @@ class Products(db.Model):
     window_per_house = Column(Integer, nullable=False)
     user_id = db.Column(db.String(50),db.ForeignKey('user.id'),nullable=False)
     user = db.relationship('User', backref=db.backref('products', lazy=True))
+
+class Iprofile(db.Model):
+    id = db.Column(db.String(50), primary_key=True, default=lambda: str( uuid.uuid4()), unique=True, nullable=False)
+    imageprofile_path = db.Column(db.String(255), nullable=True)
+    user_id = db.Column(db.String(50),db.ForeignKey('user.id'),nullable=False)
+    user = db.relationship('User', backref=db.backref('Iprofile', lazy=True))
+
+class Icover(db.Model):
+     id = db.Column(db.String(50), primary_key=True, default=lambda: str( uuid.uuid4()), unique=True, nullable=False)
+     imagecover_path = db.Column(db.String(255), nullable=True)
+     user_id = db.Column(db.String(50),db.ForeignKey('user.id'),nullable=False)
+     user = db.relationship('User', backref=db.backref('Icover', lazy=True))
+

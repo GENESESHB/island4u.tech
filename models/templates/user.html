@@ -37,23 +37,40 @@
 		<div class="modal" id="myModal1" onclick="closeModal('myModal1')">
 			<div class="modal-content" onclick="event.stopPropagation();">
 				<span class="close" onclick="closeModal('myModal1')">&times;</span>
-				<a>
+				<div class="cont">
+				   <a>
 					<p>-------</p>
-					<input type="file" class="coverimage" onchange="displayImage('coverPreview1', this)" style="width: 100%; border: 1px solid #ccc; border-radius: 10px; background-color: #edf6f9; display: flex; align-items: center;">
-					<img src="" alt="Cover Photo" id="coverPreview1" style="max-width: 40%; border: 1px solid #ccc;  margin-top: 30px; border-radius: 10px; display: none;">
-				</a>
+					<label for="coverInput" class="file-label">
+						<span id="fileText1" class="file-text"></span>
+						<i class="fa-solid fa-photo-film" style="color:  #000000; font-size: 25px; margin-bottom: 50px;" onclick="document.getElementById('coverInput').click();"></i>
+						<input type="file" id="coverInput" class="coverimage" onchange="displayImage('coverPreview1', this)">
+					</label>
+					<img src="" alt="Cover Photo" id="coverPreview1" style="max-width: 40%; border: 1px solid #ccc;  margin-top: 20px; border-radius: 10px; display: none;">
+				   </a>
+				</div>
+				<i class="fa-regular fa-paper-plane" style="font-size: 25px; color: #00bfff;"></i>
 			</div>
 		</div>
                 <div class="modal" id="myModal2" onclick="closeModal('myModal2')">
 			<div class="modal-content" onclick="event.stopPropagation();">
-                                <span class="close" onclick="closeModal('myModal2')">&times;</span>
-			        <a>
+				<span class="close" onclick="closeModal('myModal2')">&times;</span>
+				<form action="{{ url_for('add_imageprofile') }}" method="post" enctype="multipart/form-data">
+				  <a>
 					<p>-------</p>
-					<input type="file" class="profilimage" onchange="displayImage('profilePreview2', this)">
-					<img src="" alt="Profile Photo" id="profilePreview2" style="max-width: 100%; display: none;">
-				</a>
-                        </div>
-                </div>
+					<label for="profileInput" class="file-label">
+						<span id="fileText2" class="file-text"></span>
+						<i class="fa-solid fa-photo-film" style="color:  #000000; font-size: 25px; margin-bottom: 50px;" onclick="document.getElementById('profileInput').click();"></i>
+						<input type="file" id="profileInput" name="image" class="profilimage" onchange="displayImage('profilePreview2', this)">
+					</label>
+					<img src="" alt="Profile Photo" id="profilePreview2" style="max-width: 40%; display: none; border: 1px solid #ccc; margin-top: 20px; border-radius: 10px;">
+				  </a>
+				  <button type="submit">
+					  <i class="fa-regular fa-paper-plane" style="font-size: 25px; color: #00bfff;"></i>
+					   Submit
+				  </button>
+				</form>
+			</div>
+		</div>
                 <a href="{{ url_for('add_product') }}">
                         <div class="acourd">
                                 <i class="fas fa-plus-circle add-product-icon" style="font-size: 30px; "> </i>
