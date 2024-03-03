@@ -29,8 +29,22 @@
                         </div>
                 </header>
 		<div class="container1">
+			{% if current_user.Icover %}
+			      {% for icover in current_user.Icover %}
+			             <img src="{{ url_for('serve_image', filename=icover.imagecover_path.split('/')[-1]) }}" alt="Imagecover">
+			      {% endfor %}
+			{% else %}
+			             <p>No profile image available</p>
+			{% endif %}
 		    <i class="fa-solid fa-pen" onclick="openModal('myModal1')"></i>
 		    <div class="circle">
+			    {% if current_user.Iprofile %}
+			        {% for iprofile in current_user.Iprofile %}
+				     <img src="{{ url_for('serve_image', filename=iprofile.imageprofile_path.split('/')[-1]) }}" alt="Imageprofile">
+				{% endfor %}
+			    {% else %}
+			             <p>No profile image available</p>
+			    {% endif %}
 			    <i class="fa-solid fa-camera" onclick="openModal('myModal2')"></i>
 		    </div>
 		</div>
@@ -38,37 +52,44 @@
 			<div class="modal-content" onclick="event.stopPropagation();">
 				<span class="close" onclick="closeModal('myModal1')">&times;</span>
 				<div class="cont">
-				   <a>
+				    <form action="{{ url_for('add_imagecover') }}" method="post" enctype="multipart/form-data">
+				      <a>
 					<p>-------</p>
 					<label for="coverInput" class="file-label">
 						<span id="fileText1" class="file-text"></span>
 						<i class="fa-solid fa-photo-film" style="color:  #000000; font-size: 25px; margin-bottom: 50px;" onclick="document.getElementById('coverInput').click();"></i>
-						<input type="file" id="coverInput" class="coverimage" onchange="displayImage('coverPreview1', this)">
+						<input type="file" id="coverInput" name="image" class="coverimage" onchange="displayImage('coverPreview1', this)">
 					</label>
 					<img src="" alt="Cover Photo" id="coverPreview1" style="max-width: 40%; border: 1px solid #ccc;  margin-top: 20px; border-radius: 10px; display: none;">
-				   </a>
+				      </a>
+				      <button type="submit">
+					      <i class="fa-regular fa-paper-plane" style="font-size: 25px; color: #00bfff;"></i>
+					      submit
+				      </button>
+				    </form>
 				</div>
-				<i class="fa-regular fa-paper-plane" style="font-size: 25px; color: #00bfff;"></i>
 			</div>
 		</div>
                 <div class="modal" id="myModal2" onclick="closeModal('myModal2')">
 			<div class="modal-content" onclick="event.stopPropagation();">
 				<span class="close" onclick="closeModal('myModal2')">&times;</span>
-				<form action="{{ url_for('add_imageprofile') }}" method="post" enctype="multipart/form-data">
-				  <a>
+				<div class="cont">
+				   <form action="{{ url_for('add_imageprofile') }}" method="post" enctype="multipart/form-data">
+				      <a>
 					<p>-------</p>
 					<label for="profileInput" class="file-label">
 						<span id="fileText2" class="file-text"></span>
-						<i class="fa-solid fa-photo-film" style="color:  #000000; font-size: 25px; margin-bottom: 50px;" onclick="document.getElementById('profileInput').click();"></i>
+						<i class="fa-solid fa-photo-film"  style="color:  #000000; font-size: 25px; margin-bottom: 50px;" onclick="document.getElementById('profileInput').click();"></i>
 						<input type="file" id="profileInput" name="image" class="profilimage" onchange="displayImage('profilePreview2', this)">
 					</label>
 					<img src="" alt="Profile Photo" id="profilePreview2" style="max-width: 40%; display: none; border: 1px solid #ccc; margin-top: 20px; border-radius: 10px;">
-				  </a>
-				  <button type="submit">
+				      </a>
+				      <button type="submit">
 					  <i class="fa-regular fa-paper-plane" style="font-size: 25px; color: #00bfff;"></i>
 					   Submit
-				  </button>
-				</form>
+				      </button>
+				   </form>
+				</div>
 			</div>
 		</div>
                 <a href="{{ url_for('add_product') }}">

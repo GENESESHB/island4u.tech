@@ -111,7 +111,15 @@ def create_app():
         for product in user_products:
             print("Product Image Path:", product.image_path)
 
-        return render_template('user.html', user=current_user, username=username, user_products=user_products, user_data=user_data)
+        user_iprofile = Iprofile.query.filter_by(user_id=user_data.id).order_by(asc(Iprofile.id)).all()
+        for iprofile in user_iprofile:
+            print("Imageprofile Path:", iprofile.imageprofile_path)
+
+        user_icover = Icover.query.filter_by(user_id=user_data.id).order_by(asc(Icover.id)).all()
+        for icover in user_icover:
+            print("Imageprofile Path:", icover.imagecover_path)
+
+        return render_template('user.html', user=current_user, username=username, user_products=user_products, user_icover=user_icover, user_iprofile=user_iprofile, user_data=user_data)
 
     @app.route('/exit')
     def exit():
@@ -217,7 +225,24 @@ def create_app():
 
             flash('Product added successfully.', 'success')
             return redirect(url_for('user', username=current_user.username))
-        return render_template('add_product.html')
+        return render_template('dashboard.html')
+
+    @app.route('/add_imagecover', methods=['POST'])
+    @login_required
+    def add_imagecover():
+        if request.method == 'POST':
+            image_path = save_uploaded_image(request.files['image'])
+            user_id = current_user.id
+            image_cover = Icover(
+                    imagecover_path=image_path,
+                    user=current_user)
+
+            db.session.add(image_cover)
+            db.session.commit()
+
+            flash('Product added successfully.', 'success')
+            return redirect(url_for('user', username=current_user.username))
+        return render_template('dashboard.html')
 
     @app.route('/product/<string:product_id>')
     def product_detail(product_id):
