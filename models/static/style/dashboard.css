@@ -225,7 +225,8 @@ header {
     width: 100%;
     max-width: 98%;
     margin: 0 auto;
-    padding: 20px;
+    padding-top: 90px;
+    object-fit: cover;
     margin-bottom: 150px;
     background-color: none;
     border: 1px solid #ddd;
@@ -234,7 +235,7 @@ header {
 
 /* Style for the image cover */
 .container1 img[alt="Imagecover"] {
-    width: 99%;
+    width: 100%;
     height: auto;
     border-radius: 10px;
     margin-bottom: 3px;
@@ -243,10 +244,11 @@ header {
 /* Style for the edit icon */
 .container1 i.fa-pen {
     position: absolute;
+    z-index: 990;
     bottom: 10px;
     right: 10px;
-    font-size: 20px;
-    color: #333;
+    font-size: 25px;
+    color: blue;
     transform: all .42s ease;
     cursor: pointer;
 }
@@ -255,9 +257,9 @@ header {
 .container1 .circle {
     position: absolute;
     left: 6%;
-    margin-top: -69px;
-    width: 150px;
-    height: 150px;
+    margin-top: -40px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
 }
 
@@ -277,8 +279,8 @@ header {
     transform: all .42s ease;
     font-size: 20px;
     color: #fff;
-    background-color: #333;
-    padding: 5px;
+    background-color: blue;
+    padding: 15px;
     border-radius: 50%;
     cursor: pointer;
 }
