@@ -146,8 +146,6 @@ header {
     align-items: flex-end;
     margin-bottom: 80px;
     width: 100%;
-    overflow: hidden;
-    border-radius: 25px;
     height: 400px;
     border: 1px solid lightgray;
 }
@@ -155,10 +153,11 @@ header {
 .circle {
     position: absolute;
     left: 6%;
-    bottom: -10px;
+    bottom: -20px;
     width: 150px;
     height: 150px;
-    border: 1px solid #CCC;
+    background-color: skyblue;
+    border: 1px solid skyblue;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -171,23 +170,9 @@ header {
     align-self: flex-end;
     color: #000000;
     font-size: 25px;
-    z-index: 999;
     border-radius: 50%;
-    cursor: pointer;
-    transform: all .42s ease;
 }
-.container1 img {
-	position: absolute;
-	width: 100%;
-	height: auto;
-	border: 1px solid #ccc;
-	border-radius: 25px;
-	display: flex;
-	object-fit: cover;
-}
-
 .modal {
-    z-index: 1000;
     display: none;
     position: fixed;
     top: 30%;
@@ -233,16 +218,6 @@ header {
     overflow: hidden;
     margin-top: 10px;
 }
-.circle img {
-	position: absolute;
-	width: 150px;
-	height: 150px;
-	border: 1px solid #ccc;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
 
 /* Center the content inside the file input label */
 .file-label i {
@@ -275,11 +250,6 @@ header {
     display: none;
 }
 
-.container1 i:hover{
-	transform: scale(1.1);
-	color: #EE1C47;
-}
-
 @media (max-width: 600px) {
 	.card {
 		display: flex;
@@ -290,15 +260,5 @@ header {
 		max-width: 90%; /* Make the image responsive */
 		height: auto;
 		align-items: center;
-	}
-	.circle {
-		bottom: -80px;
-		left: 30%;
-	}
-	.container1 i {
-		margin-left: 90%;
-	}
-	.acourd {
-		padding-top: 40px;
 	}
 }
