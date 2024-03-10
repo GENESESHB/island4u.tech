@@ -226,7 +226,7 @@ header {
     max-width: 90%;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: none;
     border: 1px solid #ddd;
     border-radius: 10px;
 }
@@ -246,16 +246,16 @@ header {
     right: 10px;
     font-size: 20px;
     color: #333;
+    transform: all .42s ease;
     cursor: pointer;
 }
 
 /* Style for the circular profile image */
 .container1 .circle {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
-    overflow: hidden;
     margin: 0 auto;
 }
 
@@ -272,12 +272,17 @@ header {
     position: absolute;
     bottom: 0;
     right: 0;
+    transform: all .42s ease;
     font-size: 20px;
     color: #fff;
     background-color: #333;
     padding: 5px;
     border-radius: 50%;
     cursor: pointer;
+}
+.container1 i:hover{
+	transform: scale(1.1);
+	color: #EE1C47;
 }
 
 @media (max-width: 600px) {
