@@ -2,7 +2,7 @@
 """starting flask"""
 
 from flask_migrate import Migrate
-from sqlalchemy import asc
+from sqlalchemy import asc, desc
 import os
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from .user import User, Products, Iprofile, Icover, db
@@ -111,13 +111,13 @@ def create_app():
         for product in user_products:
             print("Product Image Path:", product.image_path)
 
-        user_iprofile = Iprofile.query.filter_by(user_id=user_data.id).order_by(asc(Iprofile.id)).all()
-        for iprofile in user_iprofile:
-            print("Imageprofile Path:", iprofile.imageprofile_path)
+        user_iprofile = Iprofile.query.filter_by(user_id=current_user.id).order_by(desc(Iprofile.id)).first()
+        if user_iprofile:
+            print("Imageprofile Path:", user_iprofile.imageprofile_path)
 
-        user_icover = Icover.query.filter_by(user_id=user_data.id).order_by(asc(Icover.id)).all()
-        for icover in user_icover:
-            print("Imageprofile Path:", icover.imagecover_path)
+        user_icover = Icover.query.filter_by(user_id=current_user.id).order_by(desc(Icover.id)).first()
+        if user_icover:
+            print("Imageprofile Path:", user_icover.imagecover_path)
 
         return render_template('user.html', user=current_user, username=username, user_products=user_products, user_icover=user_icover, user_iprofile=user_iprofile, user_data=user_data)
 

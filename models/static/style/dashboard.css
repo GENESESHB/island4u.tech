@@ -223,21 +223,23 @@ header {
 .container1 {
     position: relative;
     width: 100%;
-    max-width: 98%;
+    max-width: 100%;
     margin: 0 auto;
     padding-top: 90px;
     object-fit: cover;
     margin-bottom: 150px;
-    background-color: none;
+    background: linear-gradient(to bottom, rgb(115, 173, 161) 0%, rgb(151, 185, 174) 3%, white 50%, white 100%);
     border: 1px solid #ddd;
     border-radius: 10px;
 }
 
 /* Style for the image cover */
 .container1 img[alt="Imagecover"] {
-    width: 100%;
-    height: auto;
+    width: 80%;
+    height: 500px;
     border-radius: 10px;
+    position: relative;
+    left: 9%;
     margin-bottom: 3px;
 }
 
@@ -256,7 +258,7 @@ header {
 /* Style for the circular profile image */
 .container1 .circle {
     position: absolute;
-    left: 6%;
+    left: 12%;
     margin-top: -40px;
     width: 180px;
     height: 180px;

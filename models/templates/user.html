@@ -30,18 +30,14 @@
                 </header>
 		<div class="container1">
 			{% if current_user.Icover %}
-			      {% for icover in current_user.Icover %}
-			             <img src="{{ url_for('serve_image', filename=icover.imagecover_path.split('/')[-1]) }}" alt="Imagecover">
-			      {% endfor %}
+			             <img src="{{ url_for('serve_image', filename=user_icover.imagecover_path.split('/')[-1]) }}" alt="Imagecover">
 			{% else %}
 			             <p>No profile image available</p>
 			{% endif %}
 		    <i class="fa-solid fa-pen" onclick="openModal('myModal1')"></i>
 		    <div class="circle">
 			    {% if current_user.Iprofile %}
-			        {% for iprofile in current_user.Iprofile %}
-				     <img src="{{ url_for('serve_image', filename=iprofile.imageprofile_path.split('/')[-1]) }}" alt="Imageprofile">
-				{% endfor %}
+				     <img src="{{ url_for('serve_image', filename=user_iprofile.imageprofile_path.split('/')[-1]) }}" alt="Imageprofile">
 			    {% else %}
 			             <p>No profile image available</p>
 			    {% endif %}
