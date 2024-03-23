@@ -37,7 +37,25 @@ def create_app():
         if current_user.is_authenticated:
             return redirect(url_for('dashboard'))
         else:
-            return render_template('landing.html')
+            all_products = Products.query.order_by(asc(Products.id)).all()
+            processed_products = [
+                    {
+                        'name': product.name,
+                        'city': product.city,
+                        'price': product.price,
+                        'num_rooms': product.num_rooms,
+                        'section': product.section,
+                        'num_bain': product.num_bain,
+                        'window_per_house': product.window_per_house,
+                        'image_path': os.path.basename(product.image_path) if product.image_path else None,
+                        'product_id_string': str(product.id),
+                        'username': product.user.username
+                        }
+                    
+                    for product in all_products
+                    ]
+
+            return render_template('dash.html', all_products=processed_products)
 
     @app.route('/signup', methods=['GET', 'POST'])
     def signup():

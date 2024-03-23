@@ -225,11 +225,11 @@ header {
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
-    padding-top: 90px;
+    padding-top: 80px;
     object-fit: cover;
     margin-bottom: 150px;
-    background: linear-gradient(to bottom, rgb(115, 173, 161) 0%, rgb(151, 185, 174) 3%, white 50%, white 100%);
-    border: 1px solid #ddd;
+    background: linear-gradient(to bottom, rgb(219 231 219) 0%, rgb(219 231 219) 50%, white 80%, white 100%);
+    border: none;
     border-radius: 10px;
 }
 
@@ -237,7 +237,7 @@ header {
 .container1 img[alt="Imagecover"] {
     width: 80%;
     height: 500px;
-    border-radius: 10px;
+    border-radius: 24px;
     position: relative;
     left: 9%;
     margin-bottom: 3px;
@@ -250,7 +250,7 @@ header {
     bottom: 10px;
     right: 10px;
     font-size: 25px;
-    color: blue;
+    color: rgba(0, 128, 0, 0.1);
     transform: all .42s ease;
     cursor: pointer;
 }
@@ -302,4 +302,14 @@ header {
 		height: auto;
 		align-items: center;
 	}
+	.container1 .circle {
+		width: 120px;
+		height: 120px;
+		left: 35%;
+	}
+	.container1 img[alt="Imagecover"] {
+		height: 250px;
+	}
+
+
 }

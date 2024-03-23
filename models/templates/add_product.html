@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/styler.css') }}">
     <title>island4u</title>
     <link rel="icon" href="static/images/icon.png">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
 </head>
 <body>
     <form action="{{ url_for('add_product') }}" method="post" enctype="multipart/form-data">
@@ -55,10 +56,32 @@
 
         <br>
 
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" placeholder="Enter your location" required>
+        <div id="map"></div>
+
         <input type="submit" value="Add Product">
 
         <br>
         <a href="{{ url_for('user', username=current_user.username) }}">Back to user</a>
     </form>
+    <script>
+        // Initialize Google Maps autocomplete
+        function initAutocomplete() {
+            var input = document.getElementById('location');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+        }
+        // Initialize the map
+        function initMap() {
+            var mapOptions = {
+                center: { lat: 0, lng: 0 },
+                zoom: 8
+            };
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        }
+        // Initialize Google Maps functions
+        initAutocomplete();
+        initMap();
+    </script>
 </body>
 </html>
